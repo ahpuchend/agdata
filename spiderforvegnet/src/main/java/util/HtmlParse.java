@@ -23,6 +23,7 @@ public class HtmlParse {
             try{
                 productDate = ele.select("span.k_1").text();
                 productDate = productDate.substring(1,productDate.length()-1);
+                productDate = FormatDate.stringToData(productDate);
                 variety = ele.select("span.k_2").first().text();
                 type = prdtype;
                 //注意市场名可能为空,就不能根据市场名得到省份名
@@ -91,6 +92,7 @@ public class HtmlParse {
             //只要一行记录出错,整个表格扔掉
             productDate = ele.select("span.k_1").text();
             productDate = productDate.substring(1, productDate.length() - 1);
+            productDate = FormatDate.stringToData(productDate);
             if (!strategeDesign.containsOneDate(productDate)) {
                 bkreason = 1;
                 break;

@@ -1,0 +1,175 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <script src="http://code.jquery.com/jquery-1.12.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="http://code.jquery.com/jquery-1.12.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>用户管理界面</title>
+</head>
+<script>
+    function removeSession() {
+        $.get('http://localhost:8086/user/logout',
+            function (result){
+                alert(result.msg);
+                window.location.href="userlogin.html";
+            },'json');
+    }
+</script>
+<body background="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1584773846652&di=183a9831c0dffd5bef460d8cc4feb0af&imgtype=0&src=http%3A%2F%2Fattach.bbs.miui.com%2Fforum%2F201401%2F11%2F145712ldp4pq1qscka34dc.jpg" style=" background-repeat:no-repeat ;background-size:100% 100%;
+background-attachment: fixed;">
+<div class="bg">
+    <h1 class="h1" style="color:gray;margin-left: 38%;margin-top: 20px">APDAS用户管理</h1>
+</div>
+<div>
+    <button  class="btn btn-secondary btn-lg active" style="margin-left: 80%" onclick="removeSession()">登出</button>
+</div>
+
+<div class="card" style="width: 100rem;margin: 50px auto auto;height: 40rem">
+    <div class="card-body">
+    <div >
+        <a href="useradd.html" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true"style="font-size: 15px;margin-top: 20px;margin-left: 150px">添加数据</a>
+        <a href="manage.html" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true"style="font-size: 15px;margin-top: 20px;margin-left: 50px">刷新</a>
+    </div>
+    <div id="container">
+    <table id="tab"class="table" style="width:80rem;margin-top: 40px;margin-left: 150px ">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col" style="width: 200px">用户Id</th>
+            <th scope="col" style="width: 200px">密码</th>
+            <th scope="col" style="width: 200px">操作</th>
+        </tr>
+        </thead>
+        <tbody >
+        <tr v-for="item in list" :id="item.userId">
+            <td >{{ item.userId }}</td>
+            <td>{{ item.password }}</td>
+            <td>
+                <button @click="del(item.userId)">删除</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+        <nav aria-label="Page navigation example" style="margin-left: 600px">
+            <ul class="pagination">
+                <li :class="pageNo<=1?'disabled':''" class="page-item" @click="prePage()"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item" v-for="index in pageTotal" @click="curPage(index)">
+                    <a class="page-link">{{index}}</a>
+                </li>
+                <li :class="pageNo>=pageTotal?'disabled':''"class="page-item" @click="nextPage()"><a class="page-link" href="#">Next</a></li>
+            </ul>
+        </nav>
+    </div>
+    </div>
+</div>
+</body>
+<script>
+    window.onload=function () {
+        new Vue({
+            el: '#container',
+            data() {
+                return {
+                    list: [{
+                        userId:1,
+                        password:1
+                    },
+                        {
+                            userId: 2,
+                            password: 2
+                        },
+                        {
+                            userId:3,
+                            password:3
+                        },
+                        {
+                            userId:4,
+                            password:4
+                        },
+                        {
+                            userId:5,
+                            password:5
+                        }
+                    ],
+                    pageTotal:1, //总页数
+                    rows:1,//总条数
+                    pageNo:1,//当前页码
+                    pageSize:6
+                }
+            },
+
+            methods:{
+                getList:function(index){
+                    this.pageNo=index||this.pageNo;
+                    axios({
+                        method:'get',
+                        url:`http://localhost:8086/admin/userlist/${this.pageNo}/${this.pageSize}`
+                    })
+                        .then(res=> {
+                            console.log(res);
+                            this.list=res.data.data;
+                            this.pageTotal=res.data.totalPage;
+                            this.rows=res.data.num;
+                            console.log(this.list);
+                            console.log(this.pageTotal);
+                            console.log(this.rows)
+                        })
+                        .catch(function (error) {
+                            console.log(error)
+                        })
+                },
+                curPage:function(index){
+                    this.getList(index)
+                },
+                prePage:function(){
+                    if(this.pageNo>1){
+                        this.pageNo--;
+                        this.getList(this.pageNo);
+                    }
+                },
+                nextPage:function(){
+                    if(this.pageNo<this.pageTotal){
+                        this.pageNo++;
+                        this.getList(this.pageNo);
+                    }
+                },
+                del(userId){
+                    console.log(userId);
+                    $.get("/admin/del",{userId:userId},
+                        function (result){
+                            if(result.success){
+                                alert(result.msg);
+                                window.location.href="manage.html"
+                            }else{
+                                alert(result.msg);
+                            }
+                        },'json');
+                }
+
+            },
+            mounted:function () {
+                this.getList();
+            }
+        })
+    }
+
+</script>
+<script>
+    function del(use) {
+        var userId=use.id;
+        $.get("/admin/del",{userId:userId},
+            function (result){
+                if(result.success){
+                    alert(result.msg);
+                    window.location.href="manage.html"
+                }else{
+                    alert(result.msg);
+                }
+            },'json');
+    }
+</script>
+</html>

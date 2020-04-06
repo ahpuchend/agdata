@@ -1,0 +1,12 @@
+spider\CollectionSpiderforVegnet.class
+util\FormatDate.class
+util\TimerRecord.class
+spider\TimerSpiderforVegnet.class
+entity\Price.class
+util\ProMarIdUnified.class
+timedstrategy\IntervalStrategy.class
+util\MarketbelongtoProvince.class
+util\HtmlParse.class
+timedstrategy\StrategeDesign.class
+entity\SourceData.class
+spider\SpideApplication.class

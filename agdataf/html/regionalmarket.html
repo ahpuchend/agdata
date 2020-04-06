@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>主页-index</title>
+    <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
+    <meta charset="utf-8">
+    <link rel="icon" href="../assets/img/icon.ico" type="image/x-icon"/>
+    <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        WebFont.load({
+            custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands"], urls: ['../assets/css/fonts.css']},
+            active: function() {
+                sessionStorage.fonts = true;
+            }
+        });
+    </script>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/azzara.min.css">
+    <link rel="stylesheet" href="../assets/css/custom.css">
+
+    <style>
+        body{ margin:0; height:70%}
+        html{ height:100%} /*兼容firefox的div高度100%*/
+        #container1{ margin-left:1200px; height:200%}
+        #container2{ position:absolute; top:70px; left:0; width:70%; height:200%;}
+    </style>
+</head>
+<body class="login">
+
+<div class="wrapper">
+    <!--头区-->
+    <div class="main-header" data-background-color="dark">
+        <!--logo区-->
+        <div class="logo-header">
+            <!--logo与主页导航-->
+            <a href="aindex.html" class="logo">
+                <img src="../assets/img/gaoke.png" alt="navbar brand" class="navbar-brand">
+            </a>
+            <!--折叠工具按钮，可以选择使用-->
+            <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon">
+                            <i class="fa fa-bars"></i>
+                        </span>
+            </button>
+            <button class="topbar-toggler more"><i class="fa fa-ellipsis-v"></i></button>
+            <div class="navbar-minimize">
+                <button class="btn btn-minimize btn-rounded">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <!--导航区-->
+        <nav class="navbar navbar-header navbar-expand-lg">
+            <div class="container-fluid">
+                <!--工具按钮-->
+                <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
+                    <!--联系方式-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"  role="button">
+                            <i class="fa fa-envelope"></i>
+                        </a>
+                    </li>
+                    <!--任务提示-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" role="button">
+                            <i class="fa fa-bell"></i>
+                            <span class="notification">1</span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown hidden-caret">
+                        <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
+                            <div class="avatar-sm">
+                                <img src="../assets/img/user.png" alt="..." class="avatar-img rounded-circle">
+                            </div>
+                        </a>
+                        <!--工具啊按钮下拉菜单-->
+                        <ul class="dropdown-menu dropdown-user animated fadeIn">
+                            <li>
+                                <div class="user-box">
+                                    <div class="avatar-lg"><img src="../assets/img/user.png" alt="image profile" class="avatar-img rounded"></div>
+                                    <div class="u-text">
+                                        <h4>group 6</h4>
+                                        <p class="text-muted">流下没有技术的泪水</p><a href="#" class="btn btn-rounded btn-danger btn-sm">联系他</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <!--分割线-->
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">收藏</a>
+                                <a class="dropdown-item" href="#">爱好</a>
+                                <a class="dropdown-item" href="#">签名</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">账号管理</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">登出</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+
+    <!--侧边菜单区-->
+    <div class="sidebar">
+        <div class="sidebar-wrapper scrollbar-inner">
+            <!-- 登录信息 -->
+            <div class="user">
+                <div class="avatar-sm float-left mr-2">
+                    <img src="../assets/img/user.png" alt="憨憨" class="avatar-img rounded-circle">
+                </div>
+                <div class="info">
+                    <a>
+								<span>
+									group 6
+									<span class="user-level">seuer</span>
+								</span>
+                    </a>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <ul class="nav">
+                <!--首页区：无子菜单-->
+                <!-- <li class="nav-item">
+                    <a href="#">
+                        <i class="fas fa-home"></i>
+                        <p>首页</p>
+                        <span class="badge badge-count badge-success"></span>
+                    </a>
+                </li> -->
+                <!--分界区：无连接-->
+                <li class="nav-section">
+                    <div class="dropdown-divider"></div>
+                    <span class="sidebar-mini-icon">
+								<i class="fa fa-ellipsis-h"></i>
+							</span>
+                    <h4 class="text-section">农产品数据分析系统</h4>
+                    <div class="dropdown-divider"></div>
+                </li>
+                <!--功能菜单：子菜单-->
+                <li class="nav-item">
+                    <a data-toggle="collapse" href="#base">
+                        <i class="fas fa-layer-group" ></i>
+                        <p>数据分析系统</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse show" id="base">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="realtimequery.html">
+                                    <span class="sub-item">实时监控</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="typerecord.html">
+                                    <span class="sub-item">抓取量查询</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="regionalmarket.html">
+                                    <span class="sub-item" style="font-size: 20px">区域行情</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="typecompare .html">
+                                    <span class="sub-item">品种对比</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="detailquery.html">
+                                    <span class="sub-item" >数据查询</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="pricetrender.html">
+                                    <span class="sub-item">价格走势</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="priceprediction.html">
+                                    <span class="sub-item">价格预测</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--工作区-->
+    <div class="main-panel">
+        <div class="content">
+            <div class="page-inner">
+                <!-- 访问路径-->
+                <div class="page-header">
+                    <h4 class="page-title">访问路径</h4>
+                    <ul class="breadcrumbs">
+                        <li class="nav-home">
+                            <a href="#">
+                                <i class="flaticon-home"></i>
+                            </a>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a href="index.html">数据分析</a>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#">区域行情</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!--卡片式信息-->
+
+                <h4 class="page-title">数据分析</h4>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title">区域行情</div>
+                            </div>
+                            <div class="card-body">
+                                <div style="text-align:center;margin-top:30px">
+                                    <select id="type">
+                                    　　<option value="请选择产品种类">种类</option>
+                                        <option >番茄</option>
+                                        <option >辣椒</option>
+                                        <option >甜椒</option>
+                                        <option >茄子</option>
+                                        <option >甘蓝</option>
+                                        <option >花椰菜(菜花)</option>
+                                        <option >青花菜(西兰花)</option>
+                                        <option >芥蓝</option>
+                                        <option >黄瓜</option>
+                                        <option >南瓜</option>
+                                        <option >甜瓜</option>
+                                        <option >西瓜</option>
+                                        <option >西葫芦</option>
+                                        <option >葫芦</option>
+                                        <option >苦瓜</option>
+                                        <option >丝瓜</option>、
+                                        <option >冬瓜</option>
+                                        <option >节瓜</option>
+                                        <option >萝卜</option>
+                                        <option >胡萝卜</option>
+                                        <option >白菜</option>
+                                        <option >菠菜</option>
+                                        <option >芹菜</option>
+                                        <option >青梗菜</option>
+                                        <option >菜薹</option>
+                                        <option >莴苣</option>
+                                        <option >香菜</option>
+                                        <option >苋菜</option>
+                                        <option >芥菜</option>
+                                        <option >豇豆</option>
+                                        <option >菜豆</option>
+                                        <option >豌豆</option>
+                                        <option >韭菜</option>
+                                        <option >洋葱</option>
+                                        <option >葱</option>
+                                        <option >蒜、蒜薹</option>
+                                        <option >砧木</option>
+                                        <option >菜用玉米</option>
+                                        <option >马铃薯</option>
+                                        <option >芦笋</option>
+                                        <option >香椿</option>
+                                        <option>食用菌</option>
+                                    </select>
+                                    <select id="variety" style="width: 100px;">
+                                        　　<option value="请选择品种">品种</option>
+                                    </select>
+                                    <button id="sbtn" class="btn btn-warning btn-xs" >开始查询</button>
+                                </div>
+                                <div class="row col-md-12">
+                                    <div class="col-md-4" id="pnameprice" style="margin:0 auto;max-width:400px;height:500px"></div>
+                                    <div class="col-md-8" id="regionalmap" style="margin:0 auto;max-width:900px;height:500px"></div>   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 脚本放在最后，因为js脚本会访问上面的HTML Tag-->
+<script src="../assets/js/core/jquery.3.2.1.min.js"></script>
+<script src="../assets/js/core/popper.min.js"></script>
+<script src="../assets/js/core/bootstrap.min.js"></script>
+<!-- jQuery UI -->
+<script src="../assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+<script src="../assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+<!-- jQuery Scrollbar -->
+<script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+<!-- Moment JS -->
+<script src="../assets/js/plugin/moment/moment.min.js"></script>
+<!-- Chart JS -->
+<script src="../assets/js/plugin/chart.js/chart.min.js"></script>
+<!-- jQuery Sparkline -->
+<script src="../assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+<!-- Chart Circle -->
+<script src="../assets/js/plugin/chart-circle/circles.min.js"></script>
+<!-- Datatables -->
+<script src="../assets/js/plugin/datatables/datatables.min.js"></script>
+<!-- Bootstrap Notify -->
+<script src="../assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+<!-- Bootstrap Toggle -->
+<script src="../assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js"></script>
+<!-- jQuery Vector Maps -->
+<script src="../assets/js/plugin/jqvmap/jquery.vmap.min.js"></script>
+<script src="../assets/js/plugin/jqvmap/maps/jquery.vmap.world.js"></script>
+<!-- Sweet Alert -->
+<script src="../assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+<!-- Azzara JS -->
+<script src="../assets/js/ready.min.js"></script>
+<script src="https://code.highcharts.com.cn/highcharts/highcharts.js"></script>
+<script src="https://code.highcharts.com.cn/highcharts/modules/exporting.js"></script>
+<script src="https://code.highcharts.com.cn/highcharts/modules/series-label.js"></script>
+<script src="https://code.highcharts.com.cn/highcharts/modules/oldie.js"></script>
+<script src="https://code.highcharts.com.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+<script src="../assets/js/echarts.min.js"></script>
+<script src="../assets/js/china.js"></script>
+<script src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+
+
+<script>
+// 只展示地图,前后端不做数据交互
+        function randomData() {  
+            return Math.round(Math.random()*500);
+        }  
+        
+        var dataMap =[  
+            {name: '北京',value: '100' },{name: '天津',value: randomData() },  
+            {name: '上海',value: randomData() },{name: '重庆',value: randomData() },  
+            {name: '河北',value: randomData() },{name: '河南',value: randomData() },  
+            {name: '云南',value: randomData() },{name: '辽宁',value: randomData() },  
+            {name: '黑龙江',value: randomData() },{name: '湖南',value: randomData() },  
+            {name: '安徽',value: randomData() },{name: '山东',value: randomData() },  
+            {name: '新疆',value: randomData() },{name: '江苏',value: randomData() },  
+            {name: '浙江',value: randomData() },{name: '江西',value: randomData() },  
+            {name: '湖北',value: randomData() },{name: '广西',value: randomData() },  
+            {name: '甘肃',value: randomData() },{name: '山西',value: randomData() },  
+            {name: '内蒙古',value: randomData() },{name: '陕西',value: randomData() },  
+            {name: '吉林',value: randomData() },{name: '福建',value: randomData() },  
+            {name: '贵州',value: randomData() },{name: '广东',value: randomData() },  
+            {name: '青海',value: randomData() },{name: '西藏',value: randomData() },  
+            {name: '四川',value: randomData() },{name: '宁夏',value: randomData() },  
+            {name: '海南',value: randomData() },{name: '台湾',value: randomData() },  
+            {name: '香港',value: randomData() },{name: '澳门',value: randomData() },
+            {name: '南海诸岛',value: randomData() }
+        ];
+        // 需要在页面上直接标记出来的城市
+        
+        var specialMap = [];
+            // 对dataMap进行处理，使其可以直接在页面上展示
+            for (var i = 0; i < specialMap.length; i++) {
+                for (var j = 0; j < dataMap.length; j++) {
+                    if (specialMap[i] == dataMap[j].name) {
+                        dataMap[j].selected = true;
+                        break;
+                    }
+        
+                }
+            }
+        
+        var option = {
+            tooltip: {
+                formatter: function (params) {
+                    var info = '<p style="font-size:18px">' + params.name;
+                    return info;
+                },
+                backgroundColor: "#ff7f50",//提示标签背景颜色
+                textStyle: { color: "#fff" } //提示标签字体颜色
+            },
+                //左侧小导航图标
+                    visualMap: {  
+                        show : true,  
+                        x: 'right',  
+                        y: 'center',  
+                        splitList: [   
+                            {start: 500, end:600},{start: 400, end: 500},  
+                            {start: 300, end: 400},{start: 200, end: 300},  
+                            {start: 100, end: 200},{start: 0, end: 100},  
+                        ],  
+                        color: ['#5475f5', '#9feaa5', '#85daef','#74e2ca', '#e6ac53', '#9fb5ea']  
+                    }, 
+                series: [
+                    {
+                        name: '中国',
+                        type: 'map',
+                        mapType: 'china',
+                        
+                        label: {
+                            normal: {
+                                show: true,//显示省份标签
+                            },
+                            emphasis: {
+                                show: true,//对应的鼠标悬浮效果
+                            }
+                        },
+            
+                        data: dataMap
+                    }
+                ]
+        };
+        //初始化echarts实例
+        var myChart = echarts.init(document.getElementById("regionalmap"));
+        //使用制定的配置项和数据显示图表
+        myChart.setOption(option);
+
+
+
+//联动下拉框
+
+
+$("#type").change(function(){
+            $("#variety").empty();
+            var tname = '\''+$('#type').find("option:selected").text()+'\'';
+            $.ajax({
+                    url:"http://localhost:8081/user/rmselectbox",    //请求的url地址
+                    dataType:"json",   //返回格式为json
+                    async:true,
+                    data:{
+                        'type' : tname
+                    },
+                    type:"get", 
+                    success:function(result){
+                        $("#variety").append('<option  class="varietyname">品种</option>')
+                        for(i=0;i<result.length;++i){
+                            $("#variety").append('<option  class="varietyname">'+result[i]+'</option>');
+                        }
+                    },
+                    error:function(){
+                        //请求出错处理
+                        alert("请求出错");
+                    },
+                });
+
+            }); 
+
+
+//页面默认柱状图
+
+
+var chart = Highcharts.chart('pnameprice', {
+    chart: {
+        type: 'bar'
+    },
+    title: {
+        text: '各省均价'
+    },
+    xAxis: {
+        categories: ["安徽","浙江","上海","北京","河南"],
+        title: {
+            text: null
+        }
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: '均价(kg/元)',
+            align: 'high'
+        },
+        labels: {
+            overflow: 'justify'
+        }
+    },
+    tooltip: {
+        valueSuffix: '(kg/元)'
+    },
+    plotOptions: {
+        bar: {
+            dataLabels: {
+                enabled: true,
+                allowOverlap: true // 允许数据标签重叠
+            }
+        }
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'top',
+        x: -40,
+        y: 100,
+        floating: true,
+        borderWidth: 1,
+        backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+        shadow: true
+    },
+    series: [{
+        data: [2.11,2.45,2.56,1.99,2.50]
+        }
+    ]
+});
+
+
+        //右侧柱状图
+        $("#sbtn").click(
+                function(){
+                    var type = '\''+$('#type').find("option:selected").text()+'\''; 
+                    var variety = '\''+$('#variety').find("option:selected").text()+'\'' ;
+                    $.ajax({
+                        url:"http://localhost:8081/user/regionalmarket",
+                        dataType:"json",
+                        async:true,
+                        data:{
+                            'type' : type,
+                            'variety': variety
+                        },
+                        type:"get",
+                        success:function(result){
+                            var provinceList = new Array();
+                            var avgList = new Array();
+                            
+                            for(var j=0;j<result.length;++j){
+                                provinceList.push(result[j].provinceName);
+                                avgList.push(result[j].avgPrice);
+                            }
+                        
+                            // 柱状图图开始
+                            var chart = Highcharts.chart('pnameprice', {
+                            chart: {
+                                type: 'bar'
+                            },
+                            title: {
+                                text: "各地区"+ $('#variety').find("option:selected").text() +"均价"
+                            },
+                            xAxis: {
+                                categories: provinceList,
+                                title: {
+                                    text: null
+                                }
+                            },
+                            yAxis: {
+                                min: 0,
+                                title: {
+                                    text: '均价(kg/元)',
+                                    align: 'high'
+                                },
+                            },
+                            tooltip: {
+                                valueSuffix: ' (kg/元)'
+                            },
+                            plotOptions: {
+                                bar: {
+                                    dataLabels: {
+                                        enabled: true,
+                                        allowOverlap: true // 允许数据标签重叠
+                                    }
+                                }
+                            },
+                            legend: {
+                                layout: 'vertical',
+                                align: 'right',
+                                verticalAlign: 'top',
+                                x: -40,
+                                y: 100,
+                                floating: true,
+                                borderWidth: 1,
+                                backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+                                shadow: true
+                            },
+                            series: [
+                                {
+                                    data : avgList
+                                },
+                                ]
+                            });         
+                        },
+                        error:function(){
+                        //请求出错处理
+                            alert("请求出错");
+                        },
+                    })
+                }
+            )
+</script>
+
+
+
+</body>
+</html>

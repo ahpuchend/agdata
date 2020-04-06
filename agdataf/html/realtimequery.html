@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>主页-index</title>
+    <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../assets/css/realtime.css">
+    <link rel="icon" href="../assets/img/icon.ico" type="image/x-icon"/>
+    <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        WebFont.load({
+            custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands"], urls: ['../assets/css/fonts.css']},
+            active: function() {
+                sessionStorage.fonts = true;
+            }
+        });
+    </script>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/azzara.min.css">
+    <link rel="stylesheet" href="../assets/css/custom.css">
+ <style>
+    #crawlsum, #dailycount {
+		max-width: 800px;
+		height: 115px;
+            margin: 1em auto;
+    }
+ </style>   
+   
+</head>
+<body class="login">
+<div class="wrapper">
+    <!--头区-->
+    <div class="main-header" data-background-color="dark">
+        <!--logo区-->
+        <div class="logo-header">
+            <!--logo与主页导航-->
+            <a href="aindex.html" class="logo">
+                <img src="../assets/img/gaoke.png" alt="navbar brand" class="navbar-brand">
+            </a>
+            <!--折叠工具按钮，可以选择使用-->
+            <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon">
+                            <i class="fa fa-bars"></i>
+                        </span>
+            </button>
+            <button class="topbar-toggler more"><i class="fa fa-ellipsis-v"></i></button>
+            <div class="navbar-minimize">
+                <button class="btn btn-minimize btn-rounded">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <!--导航区-->
+        <nav class="navbar navbar-header navbar-expand-lg">
+            <div class="container-fluid">
+                <!--工具按钮-->
+                <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
+                    <!--联系方式-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"  role="button">
+                            <i class="fa fa-envelope"></i>
+                        </a>
+                    </li>
+                    <!--任务提示-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" role="button">
+                            <i class="fa fa-bell"></i>
+                            <span class="notification">1</span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown hidden-caret">
+                        <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
+                            <div class="avatar-sm">
+                                <img src="../assets/img/user.png" alt="..." class="avatar-img rounded-circle">
+                            </div>
+                        </a>
+                        <!--工具啊按钮下拉菜单-->
+                        <ul class="dropdown-menu dropdown-user animated fadeIn">
+                            <li>
+                                <div class="user-box">
+                                    <div class="avatar-lg"><img src="../assets/img/user.png" alt="image profile" class="avatar-img rounded"></div>
+                                    <div class="u-text">
+                                        <h4>group 6</h4>
+                                        <p class="text-muted">流下没有技术的泪水</p><a href="#" class="btn btn-rounded btn-danger btn-sm">联系他</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <!--分割线-->
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">收藏</a>
+                                <a class="dropdown-item" href="#">爱好</a>
+                                <a class="dropdown-item" href="#">签名</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">账号管理</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">登出</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+
+    <!--侧边菜单区-->
+    <div class="sidebar">
+        <div class="sidebar-wrapper scrollbar-inner">
+            <!-- 登录信息 -->
+            <div class="user">
+                <div class="avatar-sm float-left mr-2">
+                    <img src="../assets/img/user.png" alt="憨憨" class="avatar-img rounded-circle">
+                </div>
+                <div class="info">
+                    <a>
+								<span>
+									group 6
+									<span class="user-level">seuer</span>
+								</span>
+                    </a>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <ul class="nav">
+                <li class="nav-section">
+                    <div class="dropdown-divider"></div>
+                    <span class="sidebar-mini-icon">
+								<i class="fa fa-ellipsis-h"></i>
+							</span>
+                    <h4 class="text-section">农产品数据分析系统</h4>
+                    <div class="dropdown-divider"></div>
+                </li>
+                <!--功能菜单：子菜单-->
+                <li class="nav-item">
+                    <a data-toggle="collapse" href="#base">
+                        <i class="fas fa-layer-group" ></i>
+                        <p>数据分析系统</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse show" id="base">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="realtimequery.html">
+                                    <span class="sub-item" style="font-size: 20px">实时监控</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="typerecord.html">
+                                    <span class="sub-item">抓取量查询</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="regionalmarket.html">
+                                    <span class="sub-item">区域行情</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="typecompare .html">
+                                    <span class="sub-item">品种对比</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="detailquery.html">
+                                    <span class="sub-item" >数据查询</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="pricetrender.html">
+                                    <span class="sub-item">价格走势</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="priceprediction.html">
+                                    <span class="sub-item">价格预测</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--工作区-->
+    <div class="main-panel">
+        <div class="content">
+            <div class="page-inner" >
+                <!-- 访问路径-->
+                <div class="page-header">
+                    <h4 class="page-title">访问路径</h4>
+                    <ul class="breadcrumbs">
+                        <li class="nav-home">
+                            <a href="#">
+                                <i class="flaticon-home"></i>
+                            </a>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a href="index.html">数据分析</a>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#">实时监控</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!--卡片式信息-->
+
+                <h4 class="page-title">数据分析</h4>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title">实时监控</div>
+                            </div>
+                            <div class="card-body">
+                                <div  class="row col-md-12">
+                              
+                                    <div  class="row col-md-8">
+                                        <li id="marketsum" type="none"   class="realtimestatistics" style="min-width: 200px; max-width: 310px; height: 300px; margin: 0 auto"></li>
+                                        <li id="typesum" type="none"     class="realtimestatistics" style="min-width: 200px; max-width: 310px; height: 300px; margin: 0 auto"></li>
+                                        <li id="varietysum" type="none"  class="realtimestatistics" style="min-width: 200px; max-width: 310px; height: 300px; margin: 0 auto"></li>
+                                    </div>  
+                                    <div id="cloud" class="row col-md-4 float-left"></div>
+                                    <div class="row col-md-8">
+                                        <li id="crawlsum" type="none"   class="realtimestatistics" style="min-width: 200px; max-width: 310px; height: 300px; margin: 0 auto"></li> 
+                                        <li id="dailycount" type="none"   class="realtimestatistics" style="min-width: 200px; max-width: 310px; height: 300px; margin: 0 auto"></li>
+                                        <li id="crawltime" type="none"  class="realtimestatistics" style="min-width: 200px; max-width: 310px; height: 300px; margin: 0 auto"></li>
+                                    </div>
+
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 脚本放在最后，因为js脚本会访问上面的HTML Tag-->
+<script src="../assets/js/core/jquery.3.2.1.min.js"></script>
+<script src="../assets/js/core/popper.min.js"></script>
+<script src="../assets/js/core/bootstrap.min.js"></script>
+<!-- jQuery UI -->
+<script src="../assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+<script src="../assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+<!-- jQuery Scrollbar -->
+<script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+<!-- Moment JS -->
+<script src="../assets/js/plugin/moment/moment.min.js"></script>
+<!-- Chart JS -->
+<script src="../assets/js/plugin/chart.js/chart.min.js"></script>
+<!-- jQuery Sparkline -->
+<script src="../assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+<!-- Chart Circle -->
+<script src="../assets/js/plugin/chart-circle/circles.min.js"></script>
+<!-- Datatables -->
+<script src="../assets/js/plugin/datatables/datatables.min.js"></script>
+<!-- Bootstrap Notify -->
+<script src="../assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+<!-- Bootstrap Toggle -->
+<script src="../assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js"></script>
+<!-- jQuery Vector Maps -->
+<script src="../assets/js/plugin/jqvmap/jquery.vmap.min.js"></script>
+<script src="../assets/js/plugin/jqvmap/maps/jquery.vmap.world.js"></script>
+<!-- Sweet Alert -->
+<script src="../assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+<!-- Azzara JS -->
+<script src="../assets/js/ready.min.js"></script>
+<script src="https://code.highcharts.com.cn/highcharts/highcharts.js"></script>
+<script src="https://code.highcharts.com.cn/highcharts/modules/exporting.js"></script>
+<script src="https://code.highcharts.com.cn/highcharts/modules/bullet.js"></script>
+<script src="https://code.highcharts.com.cn/highcharts/highcharts-more.js"></script>
+<script src="https://code.highcharts.com.cn/highcharts/modules/solid-gauge.js"></script>
+<script src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+<script src="https://code.highcharts.com.cn/highcharts/modules/wordcloud.js"></script>
+<script src="https://code.highcharts.com.cn/highcharts/modules/oldie.js"></script>
+<!-- <script src="https://code.highcharts.com.cn/highcharts/modules/solid-gauge.js"></script> -->
+<!-- <script src="../assets/js/echart3.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+<script src="https://code.bdstatic.com/npm/vue@2.6.11/dist/vue.min.js"></script>
+<script src="https://code.bdstatic.com/npm/axios@0.19.2/dist/axios.min.js"></script>
+
+
+<script>
+
+ //词云图
+ $.ajax({
+        url: "http://localhost:8081/user/showcloud",
+        dataType:"json",   //返回格式为json
+        async:true,
+        type:"get",
+        success:function(result){
+            console.log(result);
+            var wordlist = result.reduce(
+            function (arr, word) {
+                var obj = arr.find(function (obj) {
+                    return obj.name === word;
+                });
+                if (obj) {
+                    obj.weight += 1;
+                } else {
+                    obj = {
+                        name: word,
+                        weight: 1
+                    };
+                    arr.push(obj);
+                }
+                return arr;
+            }, []);
+
+            Highcharts.chart('cloud', {
+                series: [{
+                    type: 'wordcloud',
+                    data: wordlist
+                }],
+                title: {
+                    text: '菜蔬TOP10'
+                },
+                credits:{
+                enabled : false,
+            },
+            });
+        }
+    });
+
+    //统计量查询
+    $.ajax({
+        url: "http://localhost:8081/user/realtimequery",
+        dataType:"json",   //返回格式为json
+        async:true,
+        type:"get",
+        success : function(result) {
+            console.log(result);
+            // alert(result[5]);
+//市场总数
+            var chart = Highcharts.chart('marketsum',{
+            chart: {
+                    type: 'gauge',
+                    plotBackgroundColor: null,
+                    plotBackgroundImage: null,
+                    plotBorderWidth: 0,
+                    plotShadow: false
+            },
+            title: {
+                    text: '市场总数'
+            },
+            credits:{
+                enabled : false,
+            },
+            pane: {
+                    startAngle: -150,
+                    endAngle: 150,
+		    },
+		yAxis: {
+				min: 0,
+				max: 500,
+				labels: {
+						step: 2,
+						rotation: 'auto'
+				},
+				title: {
+						text: '市场总数'
+				},
+				plotBands: [{
+						from: 0,
+						to: 120,
+						color: '#55BF3B' // green
+				}, {
+						from: 120,
+						to: 160,
+						color: '#DDDF0D' // yellow
+				}, {
+						from: 160,
+						to: 200,
+						color: '#DF5353' // red
+				}]
+		},
+		series: [{
+				name: '市场总数',
+				data: [parseInt(result[0])],
+				tooltip: {
+						valueSuffix: ' '
+				},
+		}]
+        });
+
+//品类总数
+        var chart = Highcharts.chart('typesum',{
+            chart: {
+                    type: 'gauge',
+                    plotBackgroundColor: null,
+                    plotBackgroundImage: null,
+                    plotBorderWidth: 0,
+                    plotShadow: false
+            },
+            title: {
+                    text: '品类总数'
+            },
+            credits:{
+                enabled : false,
+            },
+            pane: {
+                    startAngle: -150,
+                    endAngle: 150,
+		    },
+		// the value axis
+		yAxis: {
+				min: 0,
+				max: 200,
+				labels: {
+						step: 2,
+						rotation: 'auto'
+				},
+				title: {
+						text: '品类总数'
+				},
+				plotBands: [{
+						from: 0,
+						to: 120,
+						color: '#55BF3B' // green
+				}, {
+						from: 120,
+						to: 160,
+						color: '#DDDF0D' // yellow
+				}, {
+						from: 160,
+						to: 200,
+						color: '#DF5353' // red
+				}]
+		},
+		series: [{
+				name: '品类总数',
+				data: [parseInt(result[1])],
+				tooltip: {
+						valueSuffix: ' '
+				},
+		}]
+        });
+
+//品种总数
+
+        var chart = Highcharts.chart('varietysum',{
+            chart: {
+                    type: 'gauge',
+                    plotBackgroundColor: null,
+                    plotBackgroundImage: null,
+                    plotBorderWidth: 0,
+                    plotShadow: false
+            },
+            title: {
+                    text: '品种总数'
+            },
+            credits:{
+                enabled : false,
+            },
+            pane: {
+                    startAngle: -150,
+                    endAngle: 150,
+		    },
+		// the value axis
+		yAxis: {
+				min: 0,
+				max: 300,
+				labels: {
+						step: 2,
+						rotation: 'auto'
+				},
+				title: {
+						text: '品种总数'
+				},
+				plotBands: [{
+						from: 0,
+						to: 120,
+						color: '#55BF3B' // green
+				}, {
+						from: 120,
+						to: 160,
+						color: '#DDDF0D' // yellow
+				}, {
+						from: 160,
+						to: 200,
+						color: '#DF5353' // red
+				}]
+		},
+		series: [{
+				name: '品种总数',
+				data: [parseInt(result[2])],
+				tooltip: {
+						valueSuffix: ''
+				},
+		}]
+        });
+
+//抓取时间
+        var chart = Highcharts.chart('crawltime',{
+            chart: {
+                    type: 'gauge',
+                    plotBackgroundColor: null,
+                    plotBackgroundImage: null,
+                    plotBorderWidth: 0,
+                    plotShadow: false
+            },
+            title: {
+                    text: '最后抓取时间'
+            },
+            credits:{
+                enabled : false,
+            },
+            // pane: {
+            //         startAngle: -150,
+            //         endAngle: 150,
+		    // },
+		// the value axis
+		yAxis: {
+				min: 0,
+				max: 300,
+				labels: {
+						step: 2,
+						rotation: 'auto'
+				},
+				title: {
+                    
+						text: result[5],
+				},
+				plotBands: [{
+						from:200,
+						to: 220,
+						color: '#55BF3B' // green
+				}, {
+						from: 220,
+						to: 300,
+						color: '#DDDF0D' // yellow
+				},
+                
+                ]
+		},
+
+        series: [{
+				name: '抓取时间',
+				data: [result[5]],
+				tooltip: {
+						valueSuffix: ''
+				},
+		}]
+        });
+
+//总抓取量
+
+
+var chart = Highcharts.chart('crawlsum',{
+            chart: {
+                    type: 'gauge',
+                    plotBackgroundColor: null,
+                    plotBackgroundImage: null,
+                    plotBorderWidth: 0,
+                    plotShadow: false
+            },
+            title: {
+                    text: '总抓取量'
+            },
+            credits:{
+                enabled : false,
+            },
+            pane: {
+                    startAngle: -150,
+                    endAngle: 150,
+		    },
+		// the value axis
+		yAxis: {
+				min: 0,
+				max: 1000000,
+				labels: {
+						step: 2,
+						rotation: 'auto'
+				},
+				title: {
+						text: '总抓取量'
+				},
+				plotBands: [{
+						from: 0,
+						to: 300000,
+						color: '#55BF3B' // green
+				}, {
+						from: 300000,
+						to: 800000,
+						color: '#DDDF0D' // yellow
+				}, {
+						from: 800000,
+						to: 1000000,
+						color: '#DF5353' // red
+				}]
+		},
+		series: [{
+				name: '总抓取量',
+				data: [parseInt(result[3])],
+				tooltip: {
+						valueSuffix: ''
+				},
+		}]
+        });
+
+
+     //日抓取量   
+        var chart = Highcharts.chart('dailycount',{
+            chart: {
+                    type: 'gauge',
+                    plotBackgroundColor: null,
+                    plotBackgroundImage: null,
+                    plotBorderWidth: 0,
+                    plotShadow: false
+            },
+            title: {
+                    text: '日抓取量'
+            },
+            credits:{
+                enabled : false,
+            },
+            pane: {
+                    startAngle: -150,
+                    endAngle: 150,
+		    },
+		    yAxis: {
+				min: 0,
+				max: 300,
+				labels: {
+						step: 2,
+						rotation: 'auto'
+				},
+				title: {
+						text: '日抓取量 '
+				},
+				plotBands: [{
+						from: 0,
+						to: 120,
+						color: '#55BF3B' // green
+				}, {
+						from: 120,
+						to: 160,
+						color: '#DDDF0D' // yellow
+				}, {
+						from: 160,
+						to: 200,
+						color: '#DF5353' // red
+				}]
+		},
+		series: [{
+				name: '日抓取量 ',
+				data: [parseInt(result[4])],
+				tooltip: {
+						valueSuffix: ''
+				},
+		}]
+        });
+        },
+        error: function () {
+            alert("页面出错,请重试....")
+        },
+    });
+
+</script>
+
+
+
+</body>
+</html>

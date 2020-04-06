@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+    <property name="LOG_PATTERN"
+             value="%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} -%msg%n" />
+    <property name="DATA_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss}\t%msg%n" />
+    <property name="LOG_LEVEL" value="INFO"/>
+
+    <!-- 标准输出日志 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>${LOG_LEVEL}</level>
+        </filter>
+    </appender>
+
+    <appender name="SourceData" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>data/vegnet/%d{yyyy-MM-dd}_%i.log</fileNamePattern>
+            <maxFileSize>100MB</maxFileSize>
+            <maxHistory>10</maxHistory>
+            <totalSizeCap>10GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${DATA_PATTERN}</pattern>
+        </encoder>
+    </appender>
+    <logger name="entity.SourceData" level="${LOG_LEVEL}" addtivity="false">
+        <appender-ref ref="SourceData" />
+    </logger>
+
+    <root level="${LOG_LEVEL}">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>

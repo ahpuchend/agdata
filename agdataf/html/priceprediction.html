@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>价格预测</title>
+    <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport"/>
+    <meta charset="utf-8">
+    <link rel="icon" href="../assets/img/icon.ico" type="image/x-icon"/>
+    <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        WebFont.load({
+            custom: {
+                "families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands"],
+                urls: ['../assets/css/fonts.css']
+            },
+            active: function () {
+                sessionStorage.fonts = true;
+            }
+        });
+    </script>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/azzara.min.css">
+    <link rel="stylesheet" href="../assets/css/custom.css">
+</head>
+<body class="login">
+<div class="wrapper">
+    <!--头区-->
+    <div class="main-header" data-background-color="dark">
+        <!--logo区-->
+        <div class="logo-header">
+            <!--logo与主页导航-->
+            <a href="aindex.html" class="logo">
+                <img src="../assets/img/gaoke.png" alt="navbar brand" class="navbar-brand">
+            </a>
+            <!--折叠工具按钮，可以选择使用-->
+            <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse"
+                    data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon">
+                            <i class="fa fa-bars"></i>
+                        </span>
+            </button>
+            <button class="topbar-toggler more"><i class="fa fa-ellipsis-v"></i></button>
+            <div class="navbar-minimize">
+                <button class="btn btn-minimize btn-rounded">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <!--导航区-->
+        <nav class="navbar navbar-header navbar-expand-lg">
+            <div class="container-fluid">
+                <!--工具按钮-->
+                <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
+                    <!--联系方式-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" role="button">
+                            <i class="fa fa-envelope"></i>
+                        </a>
+                    </li>
+                    <!--任务提示-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" role="button">
+                            <i class="fa fa-bell"></i>
+                            <span class="notification">1</span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown hidden-caret">
+                        <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
+                            <div class="avatar-sm">
+                                <img src="../assets/img/user.png" alt="..." class="avatar-img rounded-circle">
+                            </div>
+                        </a>
+                        <!--工具啊按钮下拉菜单-->
+                        <ul class="dropdown-menu dropdown-user animated fadeIn">
+                            <li>
+                                <div class="user-box">
+                                    <div class="avatar-lg"><img src="../assets/img/user.png" alt="image profile"
+                                                                class="avatar-img rounded"></div>
+                                    <div class="u-text">
+                                        <h4>group 6</h4>
+                                        <p class="text-muted">流下没有技术的泪水</p><a href="#"
+                                                                              class="btn btn-rounded btn-danger btn-sm">联系他</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <!--分割线-->
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">收藏</a>
+                                <a class="dropdown-item" href="#">爱好</a>
+                                <a class="dropdown-item" href="#">签名</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">账号管理</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">登出</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+
+    <!--侧边菜单区-->
+    <div class="sidebar">
+        <div class="sidebar-wrapper scrollbar-inner">
+            <!-- 登录信息 -->
+            <div class="user">
+                <div class="avatar-sm float-left mr-2">
+                    <img src="../assets/img/user.png" alt="憨憨" class="avatar-img rounded-circle">
+                </div>
+                <div class="info">
+                    <a>
+								<span>
+									group 6
+									<span class="user-level">seuer</span>
+								</span>
+                    </a>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <ul class="nav">
+                <!--首页区：无子菜单-->
+                <!-- <li class="nav-item">
+                    <a href="#">
+                        <i class="fas fa-home"></i>
+                        <p>首页</p>
+                        <span class="badge badge-count badge-success"></span>
+                    </a>
+                </li> -->
+                <!--分界区：无连接-->
+                <li class="nav-section">
+                    <div class="dropdown-divider"></div>
+                    <span class="sidebar-mini-icon">
+								<i class="fa fa-ellipsis-h"></i>
+							</span>
+                    <h4 class="text-section">农产品数据分析系统</h4>
+                    <div class="dropdown-divider"></div>
+                </li>
+                <!--功能菜单：子菜单-->
+                <li class="nav-item">
+                    <a data-toggle="collapse" href="#base">
+                        <i class="fas fa-layer-group"></i>
+                        <p>数据分析系统</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse show" id="base">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="realtimequery.html">
+                                    <span class="sub-item">实时监控</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="typerecord.html">
+                                    <span class="sub-item">抓取量查询</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="regionalmarket.html">
+                                    <span class="sub-item">区域行情</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="typecompare .html">
+                                    <span class="sub-item">品种对比</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="detailquery.html">
+                                    <span class="sub-item">数据查询</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="pricetrender.html">
+                                    <span class="sub-item">价格走势</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="priceprediction.html">
+                                    <span class="sub-item" style="font-size: 20px">价格预测</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--工作区-->
+    <div class="main-panel">
+        <div class="content">
+            <div class="page-inner">
+                <!-- 访问路径-->
+                <div class="page-header">
+                    <h4 class="page-title">访问路径</h4>
+                    <ul class="breadcrumbs">
+                        <li class="nav-home">
+                            <a href="#">
+                                <i class="flaticon-home"></i>
+                            </a>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a href="index.html">数据分析</a>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#">价格预测</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!--卡片式信息-->
+
+                <h4 class="page-title">数据分析</h4>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title">价格预测</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-container">
+                                    <script src="https://code.bdstatic.com/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+                                    <script src="https://code.bdstatic.com/npm/highcharts@7.2.1/highcharts.js"></script>
+                                    <script src="https://code.bdstatic.com/npm/highcharts@7.2.1/highcharts-3d.js"></script>
+                                    <script src="https://code.bdstatic.com/npm/highcharts@7.2.1/modules/exporting.js"></script>
+                                    <script src="https://code.bdstatic.com/npm/highcharts@7.2.1/modules/series-label.js"></script>
+                                    <script src="https://code.bdstatic.com/npm/highcharts@7.2.1/modules/oldie.js"></script>
+                                    <script src="https://code.bdstatic.com/npm/top250html@0.0.2/highcharts-zh_CN.js"></script>
+                                    <script src="https://code.bdstatic.com/npm/vue@2.6.11/dist/vue.min.js"></script>
+                                    <script src="https://code.bdstatic.com/npm/axios@0.19.2/dist/axios.min.js"></script>
+                                    <div id="container203" style="text-align:center">
+                                        <select style="width:100px;" id="select1">
+                                            <option value="-1">请选择</option>
+                                        </select>
+                                        <select style="width: 100px;" id="select2"></select>
+                                        <select style="width: 100px;" id="select3"></select>
+                                        <select style="width: 100px;" id="select4"></select>
+                                        <button type="button" id="btn" style="background-color: orange; color: white">开始查询
+                                        </button>
+                                    </div>
+                                    <div id="container103" style="margin:0 auto;max-width:1200px;height:400px"></div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 脚本放在最后，因为js脚本会访问上面的HTML Tag-->
+<script src="../assets/js/core/jquery.3.2.1.min.js"></script>
+<script src="../assets/js/core/popper.min.js"></script>
+<script src="../assets/js/core/bootstrap.min.js"></script>
+<!-- jQuery UI -->
+<script src="../assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+<script src="../assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+<!-- jQuery Scrollbar -->
+<script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+<!-- Moment JS -->
+<script src="../assets/js/plugin/moment/moment.min.js"></script>
+<!-- Chart JS -->
+<script src="../assets/js/plugin/chart.js/chart.min.js"></script>
+<!-- jQuery Sparkline -->
+<script src="../assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+<!-- Chart Circle -->
+<script src="../assets/js/plugin/chart-circle/circles.min.js"></script>
+<!-- Datatables -->
+<script src="../assets/js/plugin/datatables/datatables.min.js"></script>
+<!-- Bootstrap Notify -->
+<script src="../assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+<!-- Bootstrap Toggle -->
+<script src="../assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js"></script>
+<!-- jQuery Vector Maps -->
+<script src="../assets/js/plugin/jqvmap/jquery.vmap.min.js"></script>
+<script src="../assets/js/plugin/jqvmap/maps/jquery.vmap.world.js"></script>
+<!-- Sweet Alert -->
+<script src="../assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+<!-- Azzara JS -->
+<script src="../assets/js/ready.min.js"></script>
+
+
+<script>
+    //后端数据在这里取json,处理一下放在 上面的的 <canvas id="ctx"></canvas>中
+    Array.prototype.unique = function () {
+        var arr = [];//新建一个临时数组
+        for (var i = 0; i < this.length; i++) {//遍历当前数组
+            if (arr.indexOf(this[i]) === -1) {//当前数组的第i个值在新数组中找不到，则添加到新数组中去
+                arr.push(this[i]);
+            }
+
+        }
+        return arr;
+    };
+
+    new Vue({
+        el: '#container203',
+        data() {
+            return {
+                data: null
+            }
+        },
+        mounted() {
+            const instance = axios({
+                post: 'get',
+                url: 'https://cdn.jsdelivr.net/npm/agdata001@0.0.7/caidanceshi.json'
+            });
+            instance.then(function (response) {
+                let data = response.data;
+                let res1 = [];
+                for (i = 0; i < data.length; i++) {
+                    res1.push(data[i].provinceName);
+                }
+                res1 = res1.unique();
+                // console.log(res1);
+
+                let res2 = [];
+                for (i = 0; i < res1.length; i++) {
+                    temp = [];
+                    for (j = 0; j < data.length; j++) {
+                        if (data[j].provinceName === res1[i]) {
+                            temp.push(data[j].marketName);
+                        }
+                    }
+                    temp = temp.unique();
+                    res2.push(temp);
+                }
+                // console.log(res2);
+
+                let res3 = [];
+                for (i = 0; i < res2.length; i++) {
+                    temp = [];
+                    for (j = 0; j < res2[i].length; j++) {
+                        temp.push(res2[i][j]);
+                    }
+                    res3.push(temp);
+                }
+                for (i = 0; i < res2.length; i++) {
+                    for (j = 0; j < res2[i].length; j++) {
+                        temp = [];
+                        for (k = 0; k < data.length; k++) {
+                            if (data[k].marketName === res2[i][j] && data[k].provinceName === res1[i]) {
+                                temp.push(data[k].type);
+                            }
+                        }
+                        temp = temp.unique();
+                        res3[i][j] = temp;
+                    }
+                }
+                console.log(res3);
+
+                let res4 = [];
+                for (i = 0; i < res3.length; i++) {
+                    temp2 = [];
+                    for (j = 0; j < res3[i].length; j++) {
+                        temp = [];
+                        for (k = 0; k < res3[i][j].length; k++) {
+                            temp.push(res3[i][j][k]);
+                        }
+                        temp2.push(temp);
+                    }
+                    res4.push(temp2);
+                }
+                // console.log(res4);
+                for (i = 0; i < res3.length; i++) {
+                    for (j = 0; j < res3[i].length; j++) {
+                        for (k = 0; k < res3[i][j].length; k++) {
+                            temp = [];
+                            for (l = 0; l < data.length; l++) {
+                                if (data[l].type === res3[i][j][k] && data[l].marketName === res2[i][j] && data[l].provinceName === res1[i]) {
+                                    temp.push(data[l].variety);
+                                }
+                            }
+                            temp = temp.unique();
+                            res4[i][j][k] = temp;
+                        }
+                    }
+                }
+                console.log(res4);
+
+
+                //声明第一个字段
+                var select1Data = res1;
+                //声明第二个字段
+                var select2Data = res2;
+                var select3Data = res3;
+                var select4Data = res4;
+
+
+                //设置一个字段1的公共下标
+                var pIndex = -1;
+                var pIndex2 = -1;
+                var select1Ele = document.getElementById("select1");
+                var select2Ele = document.getElementById("select2");
+                var select3Ele = document.getElementById("select3");
+                var select4Ele = document.getElementById("select4");
+
+                //先设置第一个字段的选项
+                for (var i = 0; i < select1Data.length; i++) {
+                    var op = new Option(select1Data[i], i);
+                    select1Ele.options.add(op);
+                }
+
+                function chg(obj) {
+                    if (obj.value === -1) {
+                        select2Ele.options.length = 0;
+                        select3Ele.options.length = 0;
+                        select4Ele.options.length = 0;
+                    }
+                    //获取值
+                    var val = obj.value;
+                    pIndex = obj.value;
+                    //获取2
+                    var s2s = select2Data[val];
+                    //获取默认3
+                    var s3s = select3Data[val][0];
+                    var s4s = select4Data[val][0][0];
+                    //先清空
+                    select2Ele.options.length = 0;
+                    select3Ele.options.length = 0;
+                    select4Ele.options.length = 0;
+
+                    for (var i = 0; i < s2s.length; i++) {
+                        var op = new Option(s2s[i], i);
+                        select2Ele.options.add(op);
+                    }
+                    for (var i = 0; i < s3s.length; i++) {
+                        var op = new Option(s3s[i], i);
+                        select3Ele.options.add(op);
+                    }
+                    for (var i = 0; i < s4s.length; i++) {
+                        var op = new Option(s4s[i], i);
+                        select4Ele.options.add(op);
+                    }
+                }
+
+                function chg2(obj) {
+                    var val = obj.selectedIndex;
+                    pIndex2 = obj.selectedIndex;
+                    var s3s = select3Data[pIndex][val];
+                    var s4s = select4Data[pIndex][val][0];
+
+                    select3Ele.options.length = 0;
+                    select4Ele.options.length = 0;
+                    for (var i = 0; i < s3s.length; i++) {
+                        var op = new Option(s3s[i], i);
+                        select3Ele.options.add(op);
+                    }
+                    for (var i = 0; i < s4s.length; i++) {
+                        var op = new Option(s4s[i], i);
+                        select4Ele.options.add(op);
+                    }
+                }
+
+                function chg3(obj) {
+                    var val = obj.selectedIndex;
+                    var s4s = select4Data[pIndex][pIndex2][val];
+                    select4Ele.options.length = 0;
+                    for (var i = 0; i < s4s.length; i++) {
+                        var op = new Option(s4s[i], i);
+                        select4Ele.options.add(op);
+                    }
+                }
+
+                select1Ele.onchange = function () {
+                    chg(this)
+                };
+                select2Ele.onchange = function () {
+                    chg2(this)
+                };
+                select3Ele.onchange = function () {
+                    chg3(this)
+                };
+
+                $('#btn').click(function () {
+                    var j1 = $.ajax({
+                        //请求方式
+                        type: "GET",
+                        dataType: "json",
+                        //请求地址
+                        url: "https://cdn.jsdelivr.net/npm/agdata001@0.0.4/averagePrice.json",
+                        data: {
+                            "marketName": $("#select2 option:selected").text(),
+                            "variety": $("#select4 option:selected").text()
+                        }, //参数值
+                    });
+
+                    var j2 = $.ajax({
+                        //请求方式
+                        type: "GET",
+                        dataType: "json",
+                        //请求地址
+                        url: "https://cdn.jsdelivr.net/npm/agdata001@0.0.4/predictionPrice.json",
+                        data: {
+                            "marketName": $("#select2 option:selected").text(),
+                            "variety": $("#select4 option:selected").text()
+                        }, //参数值
+                    });
+
+                    $.when(j1, j2).then(function(result1, result2) {
+                        let data1 = result1[0];
+                        let data2 = result2[0];
+                        console.log(data1);
+                        console.log(data2);
+                        let averagePriceList = [];
+                        let predictionPriceList = [];
+                        let all_time1 = [];
+                        let all_time2 = [];
+                        for (i = 0; i < data1.length; i++) {
+                            let temp_data = [];
+                            temp_data.push(data1[i].time);
+                            temp_data.push(data1[i].averagePrice);
+                            averagePriceList.push(temp_data);
+                            all_time1.push(data1[i].time);
+                        }
+                        for (i = 0; i < data2.length; i++) {
+                            let temp_data = [];
+                            temp_data.push(data2[i].time);
+                            temp_data.push(data2[i].predictionPrice);
+                            predictionPriceList.push(temp_data);
+                            all_time2.push(data2[i].time);
+                        }
+                        // console.log(all_time1);
+                        // console.log(all_time2);
+                        let all_times_result = all_time1.concat(all_time2).unique();
+                        console.log(all_times_result);
+
+                        let averagePriceListFinal = [];
+                        let predictionPriceListFinal = [];
+                        for (i = 0; i < all_times_result.length; i++) {
+                            let temp_data1 = [];
+                            temp_data1.push(all_times_result[i]);
+                            let tempPrice = null;
+                            for (j = 0; j < data1.length; j++) {
+                                if (data1[j].time === all_times_result[i]) {
+                                    tempPrice = data1[j].averagePrice;
+                                }
+                            }
+                            temp_data1.push(tempPrice);
+                            averagePriceListFinal.push(temp_data1);
+                        }
+                        for (i = 0; i < all_times_result.length; i++) {
+                            let temp_data2 = [];
+                            temp_data2.push(all_times_result[i]);
+                            let tempPrice = null;
+                            for (j = 0; j < data2.length; j++) {
+                                if (data2[j].time === all_times_result[i]) {
+                                    tempPrice = data2[j].predictionPrice;
+                                }
+                            }
+                            temp_data2.push(tempPrice);
+                            predictionPriceListFinal.push(temp_data2);
+                        }
+                        console.log(averagePriceListFinal);
+                        console.log(predictionPriceListFinal);
+
+                        Highcharts.chart('container103', {
+                            title: {
+                                text: ''
+                            },
+                            credits: {  //去掉highcharts.com
+                                enabled:false
+                            },
+                            exporting: {  //导出，不显示false
+                                enabled:false,
+                            },
+                            xAxis: {
+                                categories: all_times_result
+
+                            },
+                            yAxis: {
+                                title: {
+                                    text: ''
+                                }
+                            },
+                            legend: {
+                                layout: 'vertical',
+                                align: 'center',
+                                verticalAlign: 'top'
+                            },
+                            plotOptions: {
+                                series: {
+                                    label: {
+                                        connectorAllowed: false
+                                    },
+                                }
+                            },
+                            series: [{
+                                name: '实际价格',
+                                data: averagePriceListFinal
+                            }, {
+                                name: '预测价格',
+                                data: predictionPriceListFinal
+                            }],
+                            responsive: {
+                                rules: [{
+
+                                    chartOptions: {
+                                        legend: {
+                                            layout: 'horizontal',
+                                            align: 'center',
+                                            verticalAlign: 'bottom'
+                                        }
+                                    }
+                                }]
+                            }
+                        });
+
+                    })
+                });
+
+            })
+        }
+    });
+    //
+    // new Vue({
+    //     el: '#container103',
+    //     data() {
+    //         return {
+    //             data1: null,
+    //             data2: null
+    //         }
+    //     },
+    //     mounted() {
+    //
+    //         const instance = axios.all([
+    //             axios.get('https://cdn.jsdelivr.net/npm/agdata001@0.0.4/averagePrice.json'),
+    //             axios.get('https://cdn.jsdelivr.net/npm/agdata001@0.0.4/predictionPrice.json')
+    //         ]);
+    //         instance.then(axios.spread(function (Resp1, Resp2) {
+    //             // 上面两个请求都完成后，才执行这个回调方法
+    //             let data1 = Resp1.data;
+    //             let data2 = Resp2.data;
+    //             console.log(data1);
+    //             console.log(data2);
+    //
+    //             let averagePriceList = [];
+    //             let predictionPriceList = [];
+    //             let all_time1 = [];
+    //             let all_time2 = [];
+    //             for (i = 0; i < data1.length; i++) {
+    //                 let temp_data = [];
+    //                 temp_data.push(data1[i].time);
+    //                 temp_data.push(data1[i].averagePrice);
+    //                 averagePriceList.push(temp_data);
+    //                 all_time1.push(data1[i].time);
+    //             }
+    //             for (i = 0; i < data2.length; i++) {
+    //                 let temp_data = [];
+    //                 temp_data.push(data2[i].time);
+    //                 temp_data.push(data2[i].predictionPrice);
+    //                 predictionPriceList.push(temp_data);
+    //                 all_time2.push(data2[i].time);
+    //             }
+    //             // console.log(all_time1);
+    //             // console.log(all_time2);
+    //             let all_times_result = all_time1.concat(all_time2).unique();
+    //             console.log(all_times_result);
+    //
+    //             let averagePriceListFinal = [];
+    //             let predictionPriceListFinal = [];
+    //             for (i = 0; i < all_times_result.length; i++) {
+    //                 let temp_data1 = [];
+    //                 temp_data1.push(all_times_result[i]);
+    //                 let tempPrice = null;
+    //                 for (j = 0; j < data1.length; j++) {
+    //                     if (data1[j].time === all_times_result[i]) {
+    //                         tempPrice = data1[j].averagePrice;
+    //                     }
+    //                 }
+    //                 temp_data1.push(tempPrice);
+    //                 averagePriceListFinal.push(temp_data1);
+    //             }
+    //             for (i = 0; i < all_times_result.length; i++) {
+    //                 let temp_data2 = [];
+    //                 temp_data2.push(all_times_result[i]);
+    //                 let tempPrice = null;
+    //                 for (j = 0; j < data2.length; j++) {
+    //                     if (data2[j].time === all_times_result[i]) {
+    //                         tempPrice = data2[j].predictionPrice;
+    //                     }
+    //                 }
+    //                 temp_data2.push(tempPrice);
+    //                 predictionPriceListFinal.push(temp_data2);
+    //             }
+    //             console.log(averagePriceListFinal);
+    //             console.log(predictionPriceListFinal);
+    //
+    //             Highcharts.chart('container103', {
+    //                 title: {
+    //                     text: ''
+    //                 },
+    //                 credits: {  //去掉highcharts.com
+    //                     enabled:false
+    //                 },
+    //                 exporting: {  //导出，不显示false
+    //                     enabled:false,
+    //                 },
+    //                 xAxis: {
+    //                     categories: all_times_result
+    //
+    //                 },
+    //                 yAxis: {
+    //                     title: {
+    //                         text: ''
+    //                     }
+    //                 },
+    //                 legend: {
+    //                     layout: 'vertical',
+    //                     align: 'center',
+    //                     verticalAlign: 'top'
+    //                 },
+    //                 plotOptions: {
+    //                     series: {
+    //                         label: {
+    //                             connectorAllowed: false
+    //                         },
+    //                     }
+    //                 },
+    //                 series: [{
+    //                     name: '实际价格',
+    //                     data: averagePriceListFinal
+    //                 }, {
+    //                     name: '预测价格',
+    //                     data: predictionPriceListFinal
+    //                 }],
+    //                 responsive: {
+    //                     rules: [{
+    //
+    //                         chartOptions: {
+    //                             legend: {
+    //                                 layout: 'horizontal',
+    //                                 align: 'center',
+    //                                 verticalAlign: 'bottom'
+    //                             }
+    //                         }
+    //                     }]
+    //                 }
+    //             });
+    //         }))
+    //     }
+    // })
+
+</script>
+
+
+</body>
+</html>

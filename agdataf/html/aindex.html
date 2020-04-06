@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>主页-index</title>
+        <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
+        <meta charset="utf-8">
+        <link rel="icon" href="assets/img/icon.ico" type="image/x-icon"/>
+        <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
+        <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+        <script>
+            WebFont.load({
+                custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands"], urls: ['../assets/css/fonts.css']},
+                active: function() {
+                    sessionStorage.fonts = true;
+                }
+            });
+        </script>
+        <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../assets/css/azzara.min.css">
+        <link rel="stylesheet" href="../assets/css/custom.css">
+    </head>
+    <script>
+        function removeSession() {
+            var userId=$("#userId").val();
+            var password=$("#password").val();
+            $.get('http://localhost:8086/user/logout',{userId:userId,password:password},
+                function (result){
+                    alert(result.msg);
+                    window.location.href="userlogin.html";
+                },'json');
+        }
+    </script>
+
+    <body class="login">
+        <div class="wrapper">
+            <!--头区-->
+            <div class="main-header" data-background-color="dark">
+                <!--logo区-->
+                <div class="logo-header">
+                    <!--logo与主页导航-->
+                    <a href="aindex.html" class="logo">
+                        <img src="../assets/img/gaoke.png" alt="navbar brand" class="navbar-brand">
+                    </a>
+                    <!--折叠工具按钮，可以选择使用-->
+                    <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon">
+                            <i class="fa fa-bars"></i>
+                        </span>
+                    </button>
+                    <button class="topbar-toggler more"><i class="fa fa-ellipsis-v"></i></button>
+                    <div class="navbar-minimize">
+                        <button class="btn btn-minimize btn-rounded">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                    </div>
+                </div>
+                <!--导航区-->
+                <nav class="navbar navbar-header navbar-expand-lg">
+                    <div class="container-fluid">
+                        <!--工具按钮-->
+                        <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
+                            <!--联系方式-->
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"  role="button">
+                                    <i class="fa fa-envelope"></i>
+                                </a>
+                            </li>
+                            <!--任务提示-->
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" role="button">
+                                    <i class="fa fa-bell"></i>
+                                    <span class="notification">1</span>
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown hidden-caret">
+                                <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
+                                    <div class="avatar-sm">
+                                        <img src="../assets/img/user.png" alt="..." class="avatar-img rounded-circle">
+                                    </div>
+                                </a>
+                                <!--工具啊按钮下拉菜单-->
+                                <ul class="dropdown-menu dropdown-user animated fadeIn">
+                                    <li>
+                                        <div class="user-box">
+                                            <div class="avatar-lg"><img src="../assets/img/user.png" alt="image profile" class="avatar-img rounded"></div>
+                                            <div class="u-text">
+                                                <h4>group 6</h4>
+                                                <p class="text-muted">泪下了没有技术的泪水</p><a href="#" class="btn btn-rounded btn-danger btn-sm">联系他</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <!--分割线-->
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">收藏</a>
+                                        <a class="dropdown-item" href="#">爱好</a>
+                                        <a class="dropdown-item" href="#">签名</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">账号管理</a>
+                                        <div class="dropdown-divider"></div>
+                                        <button class="dropdown-item" onclick="removeSession()">登出</button>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            
+
+            <!--侧边菜单区-->
+            <div class="sidebar">
+                <div class="sidebar-wrapper scrollbar-inner">
+                    <!-- 登录信息 -->
+                    <div class="user">
+                        <div class="avatar-sm float-left mr-2">
+							<img src="../assets/img/user.png" alt="学霸" class="avatar-img rounded-circle">
+                        </div>
+                        <div class="info">
+                            <a>
+								<span>
+									大数据6组
+									<span class="user-level">菜鸡研究生</span>
+								</span>
+							</a>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <ul class="nav">
+                        <!--分界区：无连接-->
+                        <li class="nav-section">
+                            <div class="dropdown-divider"></div>
+							<span class="sidebar-mini-icon">
+								<i class="fa fa-ellipsis-h"></i>
+							</span>
+                            <h4 class="text-section">农产品数据分析系统</h4>
+                            <div class="dropdown-divider"></div>
+                        </li>
+                        <!--功能菜单：子菜单-->
+                        <li class="nav-item">
+							<a data-toggle="collapse" href="#base">
+								<i class="fas fa-layer-group" ></i>
+								<p>数据分析系统</p>
+								<span class="caret"></span>
+							</a>
+							<div class="collapse show" id="base">
+								<ul class="nav nav-collapse">
+									<li>
+										<a href="realtimequery.html">
+											<span class="sub-item">实时监控</span>
+										</a>
+									</li>
+									<li>
+										<a href="typerecord.html">
+											<span class="sub-item">抓取量查询</span>
+										</a>
+									</li>
+									<li>
+										<a href="regionalmarket.html">
+											<span class="sub-item">区域行情</span>
+										</a>
+									</li>
+									<li>
+										<a href="typecompare .html">
+											<span class="sub-item">品种对比</span>
+										</a>
+									</li>
+									<li>
+										<a href="detailquery.html">
+											<span class="sub-item">数据查询</span>
+										</a>
+									</li>
+									<li>
+										<a href="pricetrender.html">
+											<span class="sub-item">价格走势</span>
+										</a>
+                                    </li>
+                                    <li>
+										<a href="priceprediction.html">
+											<span class="sub-item">价格预测</span>
+										</a>
+                                    </li>
+								</ul>
+							</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--工作区-->
+            <div class="main-panel">
+                <div class="content">
+                    <div class="page-inner">
+                        <!-- 访问路径-->
+                        <div class="page-header">
+                            <h4 class="page-title">数据采集</h4>
+                        </div>
+                            <div class="col-md-12">
+                                <div id="globeArea"  style="height: 560px"> 
+                                </div>  
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 脚本放在最后，因为js脚本会访问上面的HTML Tag-->
+        <!--   Core JS Files   -->
+        <script src="../assets/js/core/jquery.3.2.1.min.js"></script>
+        <script src="../assets/js/core/popper.min.js"></script>
+        <script src="../assets/js/core/bootstrap.min.js"></script>
+        <!-- jQuery UI -->
+        <script src="../assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+        <script src="../assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+        <!-- jQuery Scrollbar -->
+        <script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+        <!-- Moment JS -->
+        <script src="../assets/js/plugin/moment/moment.min.js"></script>
+        <!-- Chart JS -->
+        <script src="../assets/js/plugin/chart.js/chart.min.js"></script>
+        <!-- jQuery Sparkline -->
+        <script src="../assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+        <!-- Chart Circle -->
+        <script src="../assets/js/plugin/chart-circle/circles.min.js"></script>
+        <!-- Datatables -->
+        <script src="../assets/js/plugin/datatables/datatables.min.js"></script>
+        <!-- Bootstrap Notify -->
+        <script src="../assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+        <!-- Bootstrap Toggle -->
+        <script src="../assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js"></script>
+        <!-- jQuery Vector Maps -->
+        <script src="../assets/js/plugin/jqvmap/jquery.vmap.min.js"></script>
+        <script src="../assets/js/plugin/jqvmap/maps/jquery.vmap.world.js"></script>
+        <!-- Sweet Alert -->
+        <script src="../assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+        <!-- Azzara JS -->
+        <script src="../assets/js/ready.min.js"></script>
+        <script src="https://threejs.org/build/three.min.js"></script>
+        <script src="../assets/js/gio.min.js"></script>
+        <script src="https://raw.githack.com/syt123450/giojs/master/assets/data/sampleData.js"></script>
+        <script>
+            var container = document.getElementById("globeArea");
+            var controller = new GIO.Controller(container);
+            controller.setStyle("blueInk");
+            controller.addData(data);
+            controller.setBackgroundColor("#0C020B")
+            controller.setHaloColor("#B3FFE1");
+            controller.setSelectedColor("#32ADE2");
+            controller.lightenMentioned(true);
+            controller.adjustMentionedBrightness(0.5);
+            controller.setExportColor("#20ABE2");
+            controller.setImportColor("#FFFFFF");
+            controller.init();
+            
+        </script>
+
+    </body>
+</html>

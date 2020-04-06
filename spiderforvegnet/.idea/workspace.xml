@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6a91596d-a873-4628-bdb1-2eb70e21cdc4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/spider/SpideApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/spider/SpideApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/spider/TimerSpiderforVegnet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/spider/TimerSpiderforVegnet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/HtmlParse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/HtmlParse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/TimerRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/TimerRecord.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="15" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="spiderforvegnet" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaFXApplication" />
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1ZCucoqUjVEV6IvMS8J6KYV5ViU" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../market" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\chend\IdeaProjects\spiderforvegnet\src\main\resources" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.SpideApplication">
+    <configuration name="CollectionSpiderforVegnet" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="spider.CollectionSpiderforVegnet" />
+      <module name="spiderforvegnet" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="spider.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpideApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="spider.SpideApplication" />
+      <module name="spiderforvegnet" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="spider.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TimerSpiderforVegnet" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="spider.TimerSpiderforVegnet" />
+      <module name="spiderforvegnet" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="spider.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="timerrecord" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="util.timerrecord" />
+      <module name="spiderforvegnet" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FormatDateTest.containOne" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="spiderforvegnet" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="util" />
+      <option name="MAIN_CLASS_NAME" value="util.FormatDateTest" />
+      <option name="METHOD_NAME" value="containOne" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.SpideApplication" />
+        <item itemvalue="Application.CollectionSpiderforVegnet" />
+        <item itemvalue="Application.TimerSpiderforVegnet" />
+        <item itemvalue="JUnit.FormatDateTest.containOne" />
+        <item itemvalue="Application.timerrecord" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6a91596d-a873-4628-bdb1-2eb70e21cdc4" name="Default Changelist" comment="" />
+      <created>1584355478642</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1584355478642</updated>
+      <workItem from="1584355479937" duration="2172000" />
+      <workItem from="1584424499201" duration="1774000" />
+      <workItem from="1584446051651" duration="13000" />
+      <workItem from="1584587462929" duration="57160000" />
+      <workItem from="1584696687909" duration="20000" />
+      <workItem from="1584705614936" duration="1244000" />
+      <workItem from="1584722296251" duration="3213000" />
+      <workItem from="1584768998790" duration="145000" />
+      <workItem from="1584771037348" duration="3680000" />
+      <workItem from="1584779849628" duration="2737000" />
+      <workItem from="1584867016495" duration="3273000" />
+      <workItem from="1584881564137" duration="4289000" />
+      <workItem from="1584894912321" duration="138000" />
+      <workItem from="1584958522593" duration="3000" />
+      <workItem from="1584968918517" duration="2741000" />
+      <workItem from="1585036688857" duration="2330000" />
+      <workItem from="1585071370629" duration="1248000" />
+      <workItem from="1585104007869" duration="25613000" />
+      <workItem from="1585191936617" duration="39400000" />
+      <workItem from="1585276370943" duration="10407000" />
+      <workItem from="1585288820043" duration="13466000" />
+      <workItem from="1585303041657" duration="259000" />
+      <workItem from="1585303328906" duration="31000" />
+      <workItem from="1585304866259" duration="807000" />
+      <workItem from="1585316908621" duration="3666000" />
+      <workItem from="1585320808326" duration="354000" />
+      <workItem from="1585380109182" duration="7910000" />
+      <workItem from="1585400336969" duration="565000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="361" y="71" key="#Inspections" timestamp="1585238229434">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="71" key="#Inspections/0.0.1536.824@0.0.1536.824" timestamp="1585238229434" />
+    <state x="361" y="71" key="#Notifications" timestamp="1584693659067">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="71" key="#Notifications/0.0.1536.824@0.0.1536.824" timestamp="1584693659067" />
+    <state x="361" y="71" key="#Project_Structure" timestamp="1584589874240">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="71" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1584589874240" />
+    <state x="503" y="215" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1585382583207">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="503" y="215" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1585382583207" />
+    <state x="574" y="113" key="#com.intellij.ide.util.MemberChooser" timestamp="1585280781468">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="574" y="113" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1585280781468" />
+    <state x="354" y="4" key="CommitChangelistDialog2" timestamp="1585382534024">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="354" y="4" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1585382534024" />
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1585128859986">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1585128859986" />
+    <state width="1493" height="231" key="GridCell.Tab.0.bottom" timestamp="1585389132744">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="231" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585389132744" />
+    <state width="1493" height="231" key="GridCell.Tab.0.center" timestamp="1585389132744">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="231" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1585389132744" />
+    <state width="1493" height="231" key="GridCell.Tab.0.left" timestamp="1585389132744">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="231" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1585389132744" />
+    <state width="1493" height="231" key="GridCell.Tab.0.right" timestamp="1585389132744">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="231" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585389132744" />
+    <state width="1493" height="248" key="GridCell.Tab.1.bottom" timestamp="1585288750786">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="248" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585288750786" />
+    <state width="1493" height="248" key="GridCell.Tab.1.center" timestamp="1585288750786">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="248" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1585288750786" />
+    <state width="1493" height="248" key="GridCell.Tab.1.left" timestamp="1585288750786">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="248" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1585288750786" />
+    <state width="1493" height="248" key="GridCell.Tab.1.right" timestamp="1585288750786">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="248" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1585288750786" />
+    <state x="449" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1585380106872">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="449" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1585380106872" />
+    <state x="178" y="114" key="new project wizard" timestamp="1584695881564">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="178" y="114" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1584695881564" />
+    <state x="470" y="39" key="refactoring.ChangeSignatureDialog" timestamp="1585290446815">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="470" y="39" key="refactoring.ChangeSignatureDialog/0.0.1536.824@0.0.1536.824" timestamp="1585290446815" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1584682839054">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1584682839054" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/jsoup/jsoup/1.13.1/jsoup-1.13.1.jar!/org/jsoup/select/Elements.class</url>
+          <line>28</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="href" language="JAVA" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/spiderforvegnet$CollectionSpiderforVegnet.ic" NAME="CollectionSpiderforVegnet Coverage Results" MODIFIED="1585109297804" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>spider.*</FILTER>
+    </SUITE>
+  </component>
+</project>

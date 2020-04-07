@@ -12,8 +12,8 @@ import lombok.experimental.Accessors;
  * 
  * </p>
  *
- * @author group6
- * @since 2020-03-28
+ * @author xuliang
+ * @since 2020-03-25
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -23,10 +23,24 @@ public class Admin implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId("adminId")
+    @TableId("adminid")
     private String adminId;
 
     private String password;
 
+    public String getAdminId() {
+        return adminId;
+    }
 
+    public void setAdminId(String adminId) {
+        this.adminId = adminId;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

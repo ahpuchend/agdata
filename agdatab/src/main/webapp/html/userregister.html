@@ -18,7 +18,7 @@
         if(password==""){
             alert("密码不能为空！请重新输入")
         }
-        $.get('http://localhost:8086/user/register',{userId:userId,password:password},
+        $.get('http://localhost:8081/user/register',{userId:userId,password:password},
             function (result){
                 if(result.success){
                     alert(result.msg);
@@ -30,7 +30,7 @@
     }
 </script>
 
-<body bgcolor='white'background="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1584773846652&di=183a9831c0dffd5bef460d8cc4feb0af&imgtype=0&src=http%3A%2F%2Fattach.bbs.miui.com%2Fforum%2F201401%2F11%2F145712ldp4pq1qscka34dc.jpg" style=" background-repeat:no-repeat ;background-size:100% 100%;
+<body  background="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1584773846652&di=183a9831c0dffd5bef460d8cc4feb0af&imgtype=0&src=http%3A%2F%2Fattach.bbs.miui.com%2Fforum%2F201401%2F11%2F145712ldp4pq1qscka34dc.jpg" style=" background-repeat:no-repeat ;background-size:100% 100%;
 background-attachment: fixed;">
 <div class="card" style="width: 35rem;margin: 150px auto auto;height: 20rem">
 

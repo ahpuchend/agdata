@@ -27,8 +27,8 @@ spring:
 
   mvc:
     view:
-      prefix: /jsp/
-      suffix: .jsp
+      prefix: /html/
+      suffix: .html
 
 mybatis-plus:
   type-aliases-package: cn.edu.seu.agdatab.*.entity

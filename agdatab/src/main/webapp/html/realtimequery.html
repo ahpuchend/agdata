@@ -157,7 +157,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="typecompare .html">
+                                <a href="typecompare.html">
                                     <span class="sub-item">品种对比</span>
                                 </a>
                             </li>
@@ -660,8 +660,8 @@ var chart = Highcharts.chart('crawlsum',{
 		}]
         });
         },
-        error: function () {
-            alert("页面出错,请重试....")
+        error: function (info) {
+            alert("请求出错,请登录");
         },
     });
 

@@ -20,7 +20,7 @@
         if(password==""){
             alert("密码不能为空！请重新输入")
         }
-        $.get("/admin/add",{userId:userId,password:password},
+        $.get("http://localhost:8081/user/register",{userId:userId,password:password},
             function (result){
                 if(result.success){
                     alert(result.msg);

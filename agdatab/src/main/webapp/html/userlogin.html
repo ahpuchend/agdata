@@ -18,13 +18,14 @@
             if(password==""){
                 alert("密码不能为空！请重新输入")
             }
-            $.get('http://localhost:8086/user/login',{userId:userId,password:password},
+            $.get('http://localhost:8081/user/login',{userId:userId,password:password},
                 function (result){
                     if(result.success){
-                        window.location.href="aindex.html";
+                        console.log("user登录成功"+result.success);
+                        window.location.href="/html/aindex.html";
                     }else{
                         alert(result.msg);
-                        window.location.href="userlogin.html";
+                        window.location.href="/html/userlogin.html";
                     }
                 },'json');
         }
@@ -37,18 +38,18 @@
             if(password==""){
                 alert("密码不能为空！请重新输入")
             }
-            $.get('http://localhost:8086/admin/login',{adminId:adminId,password:password},
+            $.get('http://localhost:8081/admin/login',{adminId:adminId,password:password},
                 function (result){
                     if(result.success){
-                        window.location.href="manage.html";
+                        window.location.href="/html/manage.html";
                     }else{
                         alert(result.msg);
-                        window.location.href="userlogin.html";
+                        window.location.href="/html/userlogin.html";
                     }
                 },'json');
         }
     </script>
-    <body bgcolor='white'background="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1584773846652&di=183a9831c0dffd5bef460d8cc4feb0af&imgtype=0&src=http%3A%2F%2Fattach.bbs.miui.com%2Fforum%2F201401%2F11%2F145712ldp4pq1qscka34dc.jpg" style=" background-repeat:no-repeat ;background-size:100% 100%;
+    <body background="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1584773846652&di=183a9831c0dffd5bef460d8cc4feb0af&imgtype=0&src=http%3A%2F%2Fattach.bbs.miui.com%2Fforum%2F201401%2F11%2F145712ldp4pq1qscka34dc.jpg" style=" background-repeat:no-repeat ;background-size:100% 100%;
 background-attachment: fixed;">
     <div style="width: 1000px;height:200px;margin-left: 20%;margin-top: 30px">
         <div class="jumbotron jumbotron-fluid">
@@ -79,7 +80,7 @@ background-attachment: fixed;">
                     <button type="button" class="btn btn-secondary btn-lg" style="margin-top: 50px;width: 140px;margin-left: 230px" onclick="adminLog()">管理员登录</button>
                 </div>
                 <div>
-                    <a href="userregister.html" style="font-size: 20px;margin-top:100px;margin-left:430px;color: bisque">立即注册</a>
+                    <a href="/html/userregister.html" style="font-size: 20px;margin-top:100px;margin-left:430px;color: bisque">立即注册</a>
                 </div>
             </div>
         </div>

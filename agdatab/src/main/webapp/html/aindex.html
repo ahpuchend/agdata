@@ -23,7 +23,7 @@
         function removeSession() {
             var userId=$("#userId").val();
             var password=$("#password").val();
-            $.get('http://localhost:8086/user/logout',{userId:userId,password:password},
+            $.get('http://localhost:8081/user/logout',{userId:userId,password:password},
                 function (result){
                     alert(result.msg);
                     window.location.href="userlogin.html";
@@ -161,7 +161,7 @@
 										</a>
 									</li>
 									<li>
-										<a href="typecompare .html">
+										<a href="typecompare.html">
 											<span class="sub-item">品种对比</span>
 										</a>
 									</li>
@@ -195,7 +195,7 @@
                             <h4 class="page-title">数据采集</h4>
                         </div>
                             <div class="col-md-12">
-                                <div id="globeArea"  style="height: 560px"> 
+                                <div id="globeArea" style="height: 600px;">
                                 </div>  
                             </div>
                     </div>
@@ -234,11 +234,13 @@
         <!-- Azzara JS -->
         <script src="../assets/js/ready.min.js"></script>
         <script src="https://threejs.org/build/three.min.js"></script>
-        <script src="../assets/js/gio.min.js"></script>
-        <script src="https://raw.githack.com/syt123450/giojs/master/assets/data/sampleData.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/giojs@2.2.1/build/gio.min.js"></script>  
+      <!-- load data in this data script -->
+      <script src="../assets/js/sampleData.js"></script>
+
         <script>
             var container = document.getElementById("globeArea");
-            var controller = new GIO.Controller(container);
+            var controller = new GIO.Controller( container );
             controller.setStyle("blueInk");
             controller.addData(data);
             controller.setBackgroundColor("#0C020B")

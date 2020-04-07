@@ -1,5 +1,6 @@
 package cn.edu.seu.agdatab.admin.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
@@ -12,8 +13,8 @@ import lombok.experimental.Accessors;
  * 
  * </p>
  *
- * @author group6
- * @since 2020-03-28
+ * @author xuliang
+ * @since 2020-03-25
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -23,10 +24,24 @@ public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId("userId")
+    @TableId(value="userid",type= IdType.INPUT)
     private String userId;
 
     private String password;
 
+    public String getUserId() {
+        return userId;
+    }
 
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

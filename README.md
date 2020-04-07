@@ -1,7 +1,7 @@
 # agdata
 农产品数据分析系统
 
-# 最终界面
+# View
 
 ![pic1](pic/realtime.png)
 ![pic1](pic/typerecord.png)
@@ -14,6 +14,13 @@
 ![pic1](pic/detailquery1.png)
 ![pic1](pic/pricetrender.png)
 ![pic1](pic/pricetrender1.png)
+
+# 项目架构
+
+![pic1](pic/ar.png)
+
+
+
 
 
 

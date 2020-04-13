@@ -330,7 +330,7 @@ $("#provinces").change(function(){
         var provincename = '\''+$('#provinces').find("option:selected").text()+'\'';
         $("#markets").empty();
         $.ajax({
-                url:"http://localhost:8081/user/tcsbmarkets",    //请求的url地址
+                url:"/user/tcsbmarkets",    //请求的url地址
                 dataType:"json",   //返回格式为json
                 async:true,
                 data:{
@@ -356,7 +356,7 @@ $("#provinces").change(function(){
                 var marketname = '\''+$('#markets').find("option:selected").text()+'\'';
                 $("#types").empty();
                 $.ajax({
-                    url:"http://localhost:8081/user/tcsbtypes",    //请求的url地址
+                    url:"/user/tcsbtypes",    //请求的url地址
                     dataType:"json",   //返回格式为json
                     async:true,
                     data:{
@@ -375,16 +375,7 @@ $("#provinces").change(function(){
                     }, 
                 });        
             });
-
-
-
-
-
-
-
-
 // 用户没有请求时,给个默认折线图
-
     new Vue({
         el: '#linetype',
         data() {
@@ -466,7 +457,7 @@ $("#provinces").change(function(){
                     var marketname = '\''+$('#markets').find("option:selected").text()+'\'' ;
                     var type = '\''+$('#types').find("option:selected").text()+'\'' ;
                     $.ajax({
-                        url:"http://localhost:8081/user/recordline",
+                        url:"/user/recordline",
                         dataType:"json", 
                         async:true,
                         data:{
@@ -492,10 +483,7 @@ $("#provinces").change(function(){
                                 text: '抓取数量'
                             },
                             xAxis: {
-                                // categories: ['2020-03-14', '2020-03-15','2020-03-16',
-                                // '2020-03-17','2020-03-18','2020-03-19','2020-03-20','2020-03-21','2020-03-22',
-                                // '2020-03-23']
-                                categories : crawlTimeQueue
+                                categories : crawlTimeQueue,
                             },
                             yAxis: {
                                 title: {
@@ -556,7 +544,7 @@ $("#provinces").change(function(){
         mounted() {
             const instance = axios({
                 post: 'get',
-                url :'http://localhost:8081/user/recordradio'
+                url :'/user/recordradio',
                 // url: 'https://cdn.jsdelivr.net/npm/jsontemp@1.0.2/5.json'
             });
             instance.then(function (response) {
@@ -603,12 +591,6 @@ $("#provinces").change(function(){
             })
         }
     });
-
-
-   
-
-
-
 </script>
 </body>
 </html>

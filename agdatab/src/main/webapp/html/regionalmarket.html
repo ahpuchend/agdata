@@ -425,7 +425,7 @@ $("#type").change(function(){
             $("#variety").empty();
             var tname = '\''+$('#type').find("option:selected").text()+'\'';
             $.ajax({
-                    url:"http://localhost:8081/user/rmselectbox",    //请求的url地址
+                    url:"/user/rmselectbox",    //请求的url地址
                     dataType:"json",   //返回格式为json
                     async:true,
                     data:{
@@ -508,7 +508,7 @@ var chart = Highcharts.chart('pnameprice', {
                     var type = '\''+$('#type').find("option:selected").text()+'\''; 
                     var variety = '\''+$('#variety').find("option:selected").text()+'\'' ;
                     $.ajax({
-                        url:"http://localhost:8081/user/regionalmarket",
+                        url:"/user/regionalmarket",
                         dataType:"json",
                         async:true,
                         data:{
@@ -583,8 +583,5 @@ var chart = Highcharts.chart('pnameprice', {
                 }
             )
 </script>
-
-
-
 </body>
 </html>

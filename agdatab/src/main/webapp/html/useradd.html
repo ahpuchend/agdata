@@ -20,7 +20,7 @@
         if(password==""){
             alert("密码不能为空！请重新输入")
         }
-        $.get("http://localhost:8081/user/register",{userId:userId,password:password},
+        $.get("/user/register",{userId:userId,password:password},
             function (result){
                 if(result.success){
                     alert(result.msg);
@@ -52,10 +52,8 @@ background-attachment: fixed;">
         </div>
         <div >
             <button type="button" class="btn btn-secondary btn-lg" style="margin-top: 50px;width: 250px;margin-left: 150px"onclick="save()">提交</button>
-
         </div>
     </div>
 </div>
-
 </body>
 </html>

@@ -24,7 +24,7 @@ public interface TypeRecordMapper extends BaseMapper<TypeRecord> {
             "group by  date_format(crawltime,'%Y-%m-%d') order by date_format(crawltime,'%Y-%m-%d') desc limit 7 ;")
     List<RecordLine> typeforline(String provincename, String marketname, String type);
 
-    @Select("select type,count(type) typenum from dw_t_type_record group by type")
+    @Select("select type,count(type) typenum from dw_t_type_record group by type order by typenum desc limit 10;")
     List<RecordRadio> typeforradio();
 
     @Select("select distinct(marketname) from dw_t_type_record where provincename = ${provincename};")

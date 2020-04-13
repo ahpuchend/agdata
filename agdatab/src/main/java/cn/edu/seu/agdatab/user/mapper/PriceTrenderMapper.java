@@ -19,7 +19,7 @@ public interface PriceTrenderMapper extends BaseMapper<PriceTrender> {
             "where provincename = ${provincename} and " +
             "marketname = ${marketname} and " +
             "type = ${type} and variety = ${variety} and " +
-            "productmonth = ${productmonth} order by productdate desc;")
+            "productmonth = ${productmonth} order by str_to_date(productdate,'%Y-%m-%d') desc;")
     List<DateAvgMaxMin> getDateAvgMaxMinMapper(String provincename,
                                                String marketname,
                                                String type,

@@ -229,12 +229,42 @@
                                     <script src="https://code.bdstatic.com/npm/vue@2.6.11/dist/vue.min.js"></script>
                                     <script src="https://code.bdstatic.com/npm/axios@0.19.2/dist/axios.min.js"></script>
                                     <div id="container203" style="text-align:center">
-                                        <select style="width:100px;" id="select1">
-                                            <option value="-1">请选择</option>
+                                        <select style="width:100px;" id="provinces">
+                                            <option value="省份" selected>省份</option>
+                                            <option title="北京">北京</option>
+                                            <option title="天津">天津</option>
+                                            <option title="河北">河北</option>
+                                            <option title="山西">山西</option>
+                                            <option title="内蒙">内蒙</option>
+                                            <option title="辽宁">辽宁</option>
+                                            <option title="吉林">吉林</option>
+                                            <option title="黑龙">黑龙</option>
+                                            <option title="上海">上海</option>
+                                            <option title="江苏">江苏</option>
+                                            <option title="浙江">浙江</option>
+                                            <option title="安徽">安徽</option>
+                                            <option title="福建">福建</option>
+                                            <option title="江西">江西</option>
+                                            <option title="山东">山东</option>
+                                            <option title="河南">河南</option>
+                                            <option title="湖北">湖北</option>
+                                            <option title="湖南">湖南</option>
+                                            <option title="广东">广东</option>
+                                            <option title="广西">广西</option>
+                                            <option title="海南">海南</option>
+                                            <option title="重庆">重庆</option>
+                                            <option title="贵州">贵州</option>
+                                            <option title="四川">四川</option>
+                                            <option title="云南">云南</option>
+                                            <option title="西藏">西藏</option>
+                                            <option title="陕西">陕西</option>
+                                            <option title="青海">青海</option>
+                                            <option title="宁夏">宁夏</option>
+                                            <option title="新疆">新疆</option>
                                         </select>
-                                        <select style="width: 100px;" id="select2"></select>
-                                        <select style="width: 100px;" id="select3"></select>
-                                        <select style="width: 100px;" id="select4"></select>
+                                        <select style="width: 220px;" id="markets"></select>
+                                        <select style="width: 100px;" id="types"></select>
+                                        <select style="width: 100px;" id="varieties"></select>
                                         <button id="sbtn" class="btn btn-warning btn-xs" >开始查询</button>
                                     </div>
                                     <div id="container103" style="margin:0 auto;max-width:1200px;height:400px"></div>
@@ -281,465 +311,114 @@
 
 
 <script>
-    //后端数据在这里取json,处理一下放在 上面的的 <canvas id="ctx"></canvas>中
-    Array.prototype.unique = function () {
-        var arr = [];//新建一个临时数组
-        for (var i = 0; i < this.length; i++) {//遍历当前数组
-            if (arr.indexOf(this[i]) === -1) {//当前数组的第i个值在新数组中找不到，则添加到新数组中去
-                arr.push(this[i]);
-            }
-
-        }
-        return arr;
-    };
-
-    new Vue({
-        el: '#container203',
-        data() {
-            return {
-                data: null
-            }
-        },
-        mounted() {
-            const instance = axios({
-                post: 'get',
-                url: 'https://cdn.jsdelivr.net/npm/agdata001@0.0.7/caidanceshi.json'
-            });
-            instance.then(function (response) {
-                let data = response.data;
-                let res1 = [];
-                for (i = 0; i < data.length; i++) {
-                    res1.push(data[i].provinceName);
+    $("#provinces").change(function(){
+        var provincename = '\''+$('#provinces').find("option:selected").text()+'\'';
+        $("#markets").empty();
+        $.ajax({
+            url:"/user/tcsbmarkets",    //请求的url地址
+            dataType:"json",   //返回格式为json
+            async:true,
+            data:{
+                'provincename' : provincename,
+            },
+            type:"get",
+            success:function(result){
+                $("#markets").append('<option class="marketname">市场</option>')
+                for(i=0;i<result.length;++i){
+                    $("#markets").append('<option  class="marketname">'+result[i]+'</option>');
                 }
-                res1 = res1.unique();
-                // console.log(res1);
-
-                let res2 = [];
-                for (i = 0; i < res1.length; i++) {
-                    temp = [];
-                    for (j = 0; j < data.length; j++) {
-                        if (data[j].provinceName === res1[i]) {
-                            temp.push(data[j].marketName);
-                        }
-                    }
-                    temp = temp.unique();
-                    res2.push(temp);
-                }
-                // console.log(res2);
-
-                let res3 = [];
-                for (i = 0; i < res2.length; i++) {
-                    temp = [];
-                    for (j = 0; j < res2[i].length; j++) {
-                        temp.push(res2[i][j]);
-                    }
-                    res3.push(temp);
-                }
-                for (i = 0; i < res2.length; i++) {
-                    for (j = 0; j < res2[i].length; j++) {
-                        temp = [];
-                        for (k = 0; k < data.length; k++) {
-                            if (data[k].marketName === res2[i][j] && data[k].provinceName === res1[i]) {
-                                temp.push(data[k].type);
-                            }
-                        }
-                        temp = temp.unique();
-                        res3[i][j] = temp;
-                    }
-                }
-                console.log(res3);
-
-                let res4 = [];
-                for (i = 0; i < res3.length; i++) {
-                    temp2 = [];
-                    for (j = 0; j < res3[i].length; j++) {
-                        temp = [];
-                        for (k = 0; k < res3[i][j].length; k++) {
-                            temp.push(res3[i][j][k]);
-                        }
-                        temp2.push(temp);
-                    }
-                    res4.push(temp2);
-                }
-                // console.log(res4);
-                for (i = 0; i < res3.length; i++) {
-                    for (j = 0; j < res3[i].length; j++) {
-                        for (k = 0; k < res3[i][j].length; k++) {
-                            temp = [];
-                            for (l = 0; l < data.length; l++) {
-                                if (data[l].type === res3[i][j][k] && data[l].marketName === res2[i][j] && data[l].provinceName === res1[i]) {
-                                    temp.push(data[l].variety);
-                                }
-                            }
-                            temp = temp.unique();
-                            res4[i][j][k] = temp;
-                        }
-                    }
-                }
-                console.log(res4);
-
-
-                //声明第一个字段
-                var select1Data = res1;
-                //声明第二个字段
-                var select2Data = res2;
-                var select3Data = res3;
-                var select4Data = res4;
-
-
-                //设置一个字段1的公共下标
-                var pIndex = -1;
-                var pIndex2 = -1;
-                var select1Ele = document.getElementById("select1");
-                var select2Ele = document.getElementById("select2");
-                var select3Ele = document.getElementById("select3");
-                var select4Ele = document.getElementById("select4");
-
-                //先设置第一个字段的选项
-                for (var i = 0; i < select1Data.length; i++) {
-                    var op = new Option(select1Data[i], i);
-                    select1Ele.options.add(op);
-                }
-
-                function chg(obj) {
-                    if (obj.value === -1) {
-                        select2Ele.options.length = 0;
-                        select3Ele.options.length = 0;
-                        select4Ele.options.length = 0;
-                    }
-                    //获取值
-                    var val = obj.value;
-                    pIndex = obj.value;
-                    //获取2
-                    var s2s = select2Data[val];
-                    //获取默认3
-                    var s3s = select3Data[val][0];
-                    var s4s = select4Data[val][0][0];
-                    //先清空
-                    select2Ele.options.length = 0;
-                    select3Ele.options.length = 0;
-                    select4Ele.options.length = 0;
-
-                    for (var i = 0; i < s2s.length; i++) {
-                        var op = new Option(s2s[i], i);
-                        select2Ele.options.add(op);
-                    }
-                    for (var i = 0; i < s3s.length; i++) {
-                        var op = new Option(s3s[i], i);
-                        select3Ele.options.add(op);
-                    }
-                    for (var i = 0; i < s4s.length; i++) {
-                        var op = new Option(s4s[i], i);
-                        select4Ele.options.add(op);
-                    }
-                }
-
-                function chg2(obj) {
-                    var val = obj.selectedIndex;
-                    pIndex2 = obj.selectedIndex;
-                    var s3s = select3Data[pIndex][val];
-                    var s4s = select4Data[pIndex][val][0];
-
-                    select3Ele.options.length = 0;
-                    select4Ele.options.length = 0;
-                    for (var i = 0; i < s3s.length; i++) {
-                        var op = new Option(s3s[i], i);
-                        select3Ele.options.add(op);
-                    }
-                    for (var i = 0; i < s4s.length; i++) {
-                        var op = new Option(s4s[i], i);
-                        select4Ele.options.add(op);
-                    }
-                }
-
-                function chg3(obj) {
-                    var val = obj.selectedIndex;
-                    var s4s = select4Data[pIndex][pIndex2][val];
-                    select4Ele.options.length = 0;
-                    for (var i = 0; i < s4s.length; i++) {
-                        var op = new Option(s4s[i], i);
-                        select4Ele.options.add(op);
-                    }
-                }
-
-                select1Ele.onchange = function () {
-                    chg(this)
-                };
-                select2Ele.onchange = function () {
-                    chg2(this)
-                };
-                select3Ele.onchange = function () {
-                    chg3(this)
-                };
-
-                $('#btn').click(function () {
-                    var j1 = $.ajax({
-                        //请求方式
-                        type: "GET",
-                        dataType: "json",
-                        //请求地址
-                        url: "https://cdn.jsdelivr.net/npm/agdata001@0.0.4/averagePrice.json",
-                        data: {
-                            "marketName": $("#select2 option:selected").text(),
-                            "variety": $("#select4 option:selected").text()
-                        }, //参数值
-                    });
-
-                    var j2 = $.ajax({
-                        //请求方式
-                        type: "GET",
-                        dataType: "json",
-                        //请求地址
-                        url: "https://cdn.jsdelivr.net/npm/agdata001@0.0.4/predictionPrice.json",
-                        data: {
-                            "marketName": $("#select2 option:selected").text(),
-                            "variety": $("#select4 option:selected").text()
-                        }, //参数值
-                    });
-
-                    $.when(j1, j2).then(function(result1, result2) {
-                        let data1 = result1[0];
-                        let data2 = result2[0];
-                        console.log(data1);
-                        console.log(data2);
-                        let averagePriceList = [];
-                        let predictionPriceList = [];
-                        let all_time1 = [];
-                        let all_time2 = [];
-                        for (i = 0; i < data1.length; i++) {
-                            let temp_data = [];
-                            temp_data.push(data1[i].time);
-                            temp_data.push(data1[i].averagePrice);
-                            averagePriceList.push(temp_data);
-                            all_time1.push(data1[i].time);
-                        }
-                        for (i = 0; i < data2.length; i++) {
-                            let temp_data = [];
-                            temp_data.push(data2[i].time);
-                            temp_data.push(data2[i].predictionPrice);
-                            predictionPriceList.push(temp_data);
-                            all_time2.push(data2[i].time);
-                        }
-                        // console.log(all_time1);
-                        // console.log(all_time2);
-                        let all_times_result = all_time1.concat(all_time2).unique();
-                        console.log(all_times_result);
-
-                        let averagePriceListFinal = [];
-                        let predictionPriceListFinal = [];
-                        for (i = 0; i < all_times_result.length; i++) {
-                            let temp_data1 = [];
-                            temp_data1.push(all_times_result[i]);
-                            let tempPrice = null;
-                            for (j = 0; j < data1.length; j++) {
-                                if (data1[j].time === all_times_result[i]) {
-                                    tempPrice = data1[j].averagePrice;
-                                }
-                            }
-                            temp_data1.push(tempPrice);
-                            averagePriceListFinal.push(temp_data1);
-                        }
-                        for (i = 0; i < all_times_result.length; i++) {
-                            let temp_data2 = [];
-                            temp_data2.push(all_times_result[i]);
-                            let tempPrice = null;
-                            for (j = 0; j < data2.length; j++) {
-                                if (data2[j].time === all_times_result[i]) {
-                                    tempPrice = data2[j].predictionPrice;
-                                }
-                            }
-                            temp_data2.push(tempPrice);
-                            predictionPriceListFinal.push(temp_data2);
-                        }
-                        console.log(averagePriceListFinal);
-                        console.log(predictionPriceListFinal);
-
-                        Highcharts.chart('container103', {
-                            title: {
-                                text: ''
-                            },
-                            credits: {  //去掉highcharts.com
-                                enabled:false
-                            },
-                            exporting: {  //导出，不显示false
-                                enabled:false,
-                            },
-                            xAxis: {
-                                categories: all_times_result
-
-                            },
-                            yAxis: {
-                                title: {
-                                    text: ''
-                                }
-                            },
-                            legend: {
-                                layout: 'vertical',
-                                align: 'center',
-                                verticalAlign: 'top'
-                            },
-                            plotOptions: {
-                                series: {
-                                    label: {
-                                        connectorAllowed: false
-                                    },
-                                }
-                            },
-                            series: [{
-                                name: '实际价格',
-                                data: averagePriceListFinal
-                            }, {
-                                name: '预测价格',
-                                data: predictionPriceListFinal
-                            }],
-                            responsive: {
-                                rules: [{
-
-                                    chartOptions: {
-                                        legend: {
-                                            layout: 'horizontal',
-                                            align: 'center',
-                                            verticalAlign: 'bottom'
-                                        }
-                                    }
-                                }]
-                            }
-                        });
-
-                    })
-                });
-
-            })
-        }
+            },
+            error : function(){
+                alert("请求出错");
+            },
+        });
     });
-    //
-    // new Vue({
-    //     el: '#container103',
-    //     data() {
-    //         return {
-    //             data1: null,
-    //             data2: null
-    //         }
-    //     },
-    //     mounted() {
-    //
-    //         const instance = axios.all([
-    //             axios.get('https://cdn.jsdelivr.net/npm/agdata001@0.0.4/averagePrice.json'),
-    //             axios.get('https://cdn.jsdelivr.net/npm/agdata001@0.0.4/predictionPrice.json')
-    //         ]);
-    //         instance.then(axios.spread(function (Resp1, Resp2) {
-    //             // 上面两个请求都完成后，才执行这个回调方法
-    //             let data1 = Resp1.data;
-    //             let data2 = Resp2.data;
-    //             console.log(data1);
-    //             console.log(data2);
-    //
-    //             let averagePriceList = [];
-    //             let predictionPriceList = [];
-    //             let all_time1 = [];
-    //             let all_time2 = [];
-    //             for (i = 0; i < data1.length; i++) {
-    //                 let temp_data = [];
-    //                 temp_data.push(data1[i].time);
-    //                 temp_data.push(data1[i].averagePrice);
-    //                 averagePriceList.push(temp_data);
-    //                 all_time1.push(data1[i].time);
-    //             }
-    //             for (i = 0; i < data2.length; i++) {
-    //                 let temp_data = [];
-    //                 temp_data.push(data2[i].time);
-    //                 temp_data.push(data2[i].predictionPrice);
-    //                 predictionPriceList.push(temp_data);
-    //                 all_time2.push(data2[i].time);
-    //             }
-    //             // console.log(all_time1);
-    //             // console.log(all_time2);
-    //             let all_times_result = all_time1.concat(all_time2).unique();
-    //             console.log(all_times_result);
-    //
-    //             let averagePriceListFinal = [];
-    //             let predictionPriceListFinal = [];
-    //             for (i = 0; i < all_times_result.length; i++) {
-    //                 let temp_data1 = [];
-    //                 temp_data1.push(all_times_result[i]);
-    //                 let tempPrice = null;
-    //                 for (j = 0; j < data1.length; j++) {
-    //                     if (data1[j].time === all_times_result[i]) {
-    //                         tempPrice = data1[j].averagePrice;
-    //                     }
-    //                 }
-    //                 temp_data1.push(tempPrice);
-    //                 averagePriceListFinal.push(temp_data1);
-    //             }
-    //             for (i = 0; i < all_times_result.length; i++) {
-    //                 let temp_data2 = [];
-    //                 temp_data2.push(all_times_result[i]);
-    //                 let tempPrice = null;
-    //                 for (j = 0; j < data2.length; j++) {
-    //                     if (data2[j].time === all_times_result[i]) {
-    //                         tempPrice = data2[j].predictionPrice;
-    //                     }
-    //                 }
-    //                 temp_data2.push(tempPrice);
-    //                 predictionPriceListFinal.push(temp_data2);
-    //             }
-    //             console.log(averagePriceListFinal);
-    //             console.log(predictionPriceListFinal);
-    //
-    //             Highcharts.chart('container103', {
-    //                 title: {
-    //                     text: ''
-    //                 },
-    //                 credits: {  //去掉highcharts.com
-    //                     enabled:false
-    //                 },
-    //                 exporting: {  //导出，不显示false
-    //                     enabled:false,
-    //                 },
-    //                 xAxis: {
-    //                     categories: all_times_result
-    //
-    //                 },
-    //                 yAxis: {
-    //                     title: {
-    //                         text: ''
-    //                     }
-    //                 },
-    //                 legend: {
-    //                     layout: 'vertical',
-    //                     align: 'center',
-    //                     verticalAlign: 'top'
-    //                 },
-    //                 plotOptions: {
-    //                     series: {
-    //                         label: {
-    //                             connectorAllowed: false
-    //                         },
-    //                     }
-    //                 },
-    //                 series: [{
-    //                     name: '实际价格',
-    //                     data: averagePriceListFinal
-    //                 }, {
-    //                     name: '预测价格',
-    //                     data: predictionPriceListFinal
-    //                 }],
-    //                 responsive: {
-    //                     rules: [{
-    //
-    //                         chartOptions: {
-    //                             legend: {
-    //                                 layout: 'horizontal',
-    //                                 align: 'center',
-    //                                 verticalAlign: 'bottom'
-    //                             }
-    //                         }
-    //                     }]
-    //                 }
-    //             });
-    //         }))
-    //     }
-    // })
+    //品类下拉框
+    $("#markets").change(
+        function(){
+            var provincename = '\''+$('#provinces').find("option:selected").text()+'\'';
+            var marketname = '\''+$('#markets').find("option:selected").text()+'\'';
+            $("#types").empty();
+            $.ajax({
+                url:"/user/tcsbtypes",    //请求的url地址
+                dataType:"json",   //返回格式为json
+                async:true,
+                data:{
+                    'provincename' : provincename,
+                    'marketname' : marketname,
+                },
+                type:"get",
+                success:function(result){
+                    $("#types").append('<option  class="marketname">品类</option>')
+                    for(i=0;i<result.length;++i){
+                        $("#types").append('<option  class="typename">'+result[i] +'</option>');
+                    }
+                },
+                error : function(){
+                    alert("请求出错");
+                },
+            });
+        });
+
+    //品种下拉框
+
+    //品种下拉框
+    $("#types").change(
+        function(){
+            var provincename = '\''+$('#provinces').find("option:selected").text()+'\'';
+            var marketname = '\''+$('#markets').find("option:selected").text()+'\'';
+            var type = '\''+$('#types').find("option:selected").text()+'\'';
+            $("#varieties").empty();
+            $.ajax({
+                url:"/user/dqsbvariety",    //请求的url地址
+                dataType:"json",   //返回格式为json
+                async:true,
+                data:{
+                    'provincename' : provincename,
+                    'marketname' : marketname,
+                    'type' : type,
+                },
+                type:"get",
+                success:function(result){
+                    $("#varieties").append('<option  class="marketname">品种</option>')
+                    for(i=0;i<result.length;++i){
+                        $("#varieties").append('<option  class="varietyname">'+result[i] +'</option>');
+                    }
+                },
+                error : function(){
+                    alert("请求出错,请登录");
+                },
+            });
+        });
+
+
+    //点击查询
+    $("#sbtn").click(
+        function(){
+            var provincename = '\''+$('#provinces').find("option:selected").text()+'\'';
+            var marketname = '\''+$('#markets').find("option:selected").text()+'\'' ;
+            var type = '\''+$('#types').find("option:selected").text()+'\'' ;
+            var variety = '\''+$('#varieties').find("option:selected").text()+'\'' ;
+            $.ajax({
+                url:"/user/priceprediction",    //请求的url地址
+                dataType:"json",   //返回格式为json
+                async:true,//请求是否异步，默认为异步，这也是ajax重要特性
+                data:{
+                    'provincename' : provincename,
+                    'marketname': marketname,
+                    'type' : type,
+                    'variety' : variety,
+                },
+                type:"get",   //请求方式
+                success:function(result){
+                    console.log(result);
+                },
+                error:function(){
+                    //请求出错处理
+                    alert("请求出错");
+                },
+            });
+        });
 
 </script>
 

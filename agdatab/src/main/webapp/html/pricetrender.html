@@ -333,7 +333,7 @@ $("#provinces").change(function(){
         var provincename = '\''+$('#provinces').find("option:selected").text()+'\'';
         $("#markets").empty();
         $.ajax({
-                url:"http://localhost:8081/user/tcsbmarkets",    //请求的url地址
+                url:"/user/tcsbmarkets",    //请求的url地址
                 dataType:"json",   //返回格式为json
                 async:true,
                 data:{
@@ -359,7 +359,7 @@ $("#provinces").change(function(){
                 var marketname = '\''+$('#markets').find("option:selected").text()+'\'';
                 $("#types").empty();
                 $.ajax({
-                    url:"http://localhost:8081/user/tcsbtypes",    //请求的url地址
+                    url:"/user/tcsbtypes",    //请求的url地址
                     dataType:"json",   //返回格式为json
                     async:true,
                     data:{
@@ -388,7 +388,7 @@ $("#types").change(
                 var type = '\''+$('#types').find("option:selected").text()+'\'';
                 $("#varieties").empty();
                 $.ajax({
-                    url:"http://localhost:8081/user/tcsbvarieties",    //请求的url地址
+                    url:"/user/tcsbvarieties",    //请求的url地址
                     dataType:"json",   //返回格式为json
                     async:true,
                     data:{
@@ -423,7 +423,7 @@ $("#types").change(
             type: "GET",
             dataType: "json",
             //请求地址
-            url: "http://localhost:8081/user/pricetrender",
+            url: "/user/pricetrender",
             //数据，json字符串
             data: {
                 'provincename':provincename,
@@ -551,32 +551,6 @@ $("#types").change(
                         data: [2.5,2.8,2.8,2.9,3.4,3.7],
                     }]
                 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </script>
-
-
-
 </body>
 </html>
-<!-- select provincename,marketname,type, variety,avgprice,maxprice,minprice,productdate,month(productdate) productmonth
-from ods.ods_sourcedata
-where provincename = '北京' and 
-marketname = '北京朝阳区大洋路综合市场' and
-month(productdate) = 3 and
-variety = '杏鲍菇'; -->

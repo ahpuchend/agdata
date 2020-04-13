@@ -223,15 +223,15 @@
                                 <div  class="row col-md-12">
                               
                                     <div  class="row col-md-8">
-                                        <li id="marketsum" type="none"   class="realtimestatistics" style="min-width: 200px; max-width: 310px; height: 300px; margin: 0 auto"></li>
-                                        <li id="typesum" type="none"     class="realtimestatistics" style="min-width: 200px; max-width: 310px; height: 300px; margin: 0 auto"></li>
-                                        <li id="varietysum" type="none"  class="realtimestatistics" style="min-width: 200px; max-width: 310px; height: 300px; margin: 0 auto"></li>
+                                        <li id="marketsum" type="none"   class="realtimestatistics" style="min-width: 260px; max-width: 310px; height: 300px; padding: 0; margin: 0 auto"></li>
+                                        <li id="typesum" type="none"     class="realtimestatistics" style="min-width: 260px; max-width: 310px; height: 300px; padding: 0; margin: 0 auto"></li>
+                                        <li id="varietysum" type="none"  class="realtimestatistics" style="min-width: 280px; max-width: 310px; height: 300px; padding: 0; margin: 0 auto"></li>
                                     </div>  
                                     <div id="cloud" class="row col-md-4 float-left"></div>
                                     <div class="row col-md-8">
-                                        <li id="crawlsum" type="none"   class="realtimestatistics" style="min-width: 200px; max-width: 310px; height: 300px; margin: 0 auto"></li> 
-                                        <li id="dailycount" type="none"   class="realtimestatistics" style="min-width: 200px; max-width: 310px; height: 300px; margin: 0 auto"></li>
-                                        <li id="crawltime" type="none"  class="realtimestatistics" style="min-width: 200px; max-width: 310px; height: 300px; margin: 0 auto"></li>
+                                        <li id="crawlsum" type="none"   class="realtimestatistics" style="min-width: 260px; max-width: 310px; height: 300px; padding: 0; margin: 0 auto"></li>
+                                        <li id="dailycount" type="none"   class="realtimestatistics" style="min-width: 260px; max-width: 310px; height: 300px; padding: 0; margin: 0 auto"></li>
+                                        <li id="crawltime" type="none"  class="realtimestatistics" style="min-width: 260px; max-width: 310px; height: 300px; padding: 0;  margin: 0 auto"></li>
                                     </div>
 
                                     
@@ -293,7 +293,7 @@
 
  //词云图
  $.ajax({
-        url: "http://localhost:8081/user/showcloud",
+        url: "/user/showcloud",
         dataType:"json",   //返回格式为json
         async:true,
         type:"get",
@@ -315,7 +315,6 @@
                 }
                 return arr;
             }, []);
-
             Highcharts.chart('cloud', {
                 series: [{
                     type: 'wordcloud',
@@ -330,17 +329,14 @@
             });
         }
     });
-
     //统计量查询
     $.ajax({
-        url: "http://localhost:8081/user/realtimequery",
+        url: "/user/realtimequery",
         dataType:"json",   //返回格式为json
         async:true,
         type:"get",
         success : function(result) {
-            console.log(result);
-            // alert(result[5]);
-//市场总数
+            //市场总数
             var chart = Highcharts.chart('marketsum',{
             chart: {
                     type: 'gauge',
@@ -356,43 +352,42 @@
                 enabled : false,
             },
             pane: {
-                    startAngle: -150,
-                    endAngle: 150,
-		    },
-		yAxis: {
-				min: 0,
-				max: 500,
-				labels: {
-						step: 2,
-						rotation: 'auto'
-				},
+                startAngle: -150,
+                endAngle: 150,
+            },
+            yAxis: {
+                min: 0,
+                max: 400,
+                labels: {
+                    step: 100,
+                    rotation: 'auto'
+                },
 				title: {
 						text: '市场总数'
 				},
 				plotBands: [{
 						from: 0,
-						to: 120,
-						color: '#55BF3B' // green
-				}, {
-						from: 120,
-						to: 160,
-						color: '#DDDF0D' // yellow
-				}, {
-						from: 160,
 						to: 200,
-						color: '#DF5353' // red
+						color: '#55BF3B',
+				}, {
+						from: 200,
+						to: 350,
+						color: '#DDDF0D',
+				}, {
+						from: 350,
+						to: 400,
+						color: '#DF5353',
 				}]
 		},
 		series: [{
 				name: '市场总数',
 				data: [parseInt(result[0])],
 				tooltip: {
-						valueSuffix: ' '
+                    valueSuffix: ' '
 				},
-		}]
+		}],
         });
-
-//品类总数
+        //品类总数
         var chart = Highcharts.chart('typesum',{
             chart: {
                     type: 'gauge',
@@ -411,8 +406,7 @@
                     startAngle: -150,
                     endAngle: 150,
 		    },
-		// the value axis
-		yAxis: {
+		    yAxis: {
 				min: 0,
 				max: 200,
 				labels: {
@@ -425,15 +419,15 @@
 				plotBands: [{
 						from: 0,
 						to: 120,
-						color: '#55BF3B' // green
+						color: '#55BF3B'
 				}, {
 						from: 120,
 						to: 160,
-						color: '#DDDF0D' // yellow
+						color: '#DDDF0D'
 				}, {
 						from: 160,
 						to: 200,
-						color: '#DF5353' // red
+						color: '#DF5353'
 				}]
 		},
 		series: [{
@@ -444,9 +438,7 @@
 				},
 		}]
         });
-
-//品种总数
-
+        //品种总数
         var chart = Highcharts.chart('varietysum',{
             chart: {
                     type: 'gauge',
@@ -465,10 +457,9 @@
                     startAngle: -150,
                     endAngle: 150,
 		    },
-		// the value axis
-		yAxis: {
+		    yAxis: {
 				min: 0,
-				max: 300,
+				max: 400,
 				labels: {
 						step: 2,
 						rotation: 'auto'
@@ -478,28 +469,27 @@
 				},
 				plotBands: [{
 						from: 0,
-						to: 120,
-						color: '#55BF3B' // green
-				}, {
-						from: 120,
-						to: 160,
-						color: '#DDDF0D' // yellow
-				}, {
-						from: 160,
 						to: 200,
-						color: '#DF5353' // red
+						color: '#55BF3B'
+				}, {
+						from: 200,
+						to: 350,
+						color: '#DDDF0D'
+				}, {
+						from: 350,
+						to: 400,
+						color: '#DF5353'
 				}]
 		},
 		series: [{
 				name: '品种总数',
 				data: [parseInt(result[2])],
 				tooltip: {
-						valueSuffix: ''
+						valueSuffix: ' '
 				},
 		}]
         });
-
-//抓取时间
+        //抓取时间
         var chart = Highcharts.chart('crawltime',{
             chart: {
                     type: 'gauge',
@@ -514,48 +504,44 @@
             credits:{
                 enabled : false,
             },
-            // pane: {
-            //         startAngle: -150,
-            //         endAngle: 150,
-		    // },
-		// the value axis
+            pane: {
+                    startAngle: -150,
+                    endAngle: 150,
+		    },
 		yAxis: {
 				min: 0,
-				max: 300,
+				max: 100,
 				labels: {
 						step: 2,
 						rotation: 'auto'
 				},
 				title: {
-                    
-						text: result[5],
+                    text: result[5],
+                    y : 30,
 				},
 				plotBands: [{
-						from:200,
-						to: 220,
-						color: '#55BF3B' // green
+						from:0,
+						to: 80,
+						color: '#55BF3B'
 				}, {
-						from: 220,
-						to: 300,
-						color: '#DDDF0D' // yellow
+						from: 80,
+						to: 100,
+						color: '#DDDF0D'
 				},
                 
                 ]
 		},
-
         series: [{
 				name: '抓取时间',
-				data: [result[5]],
+				data: [0],
 				tooltip: {
 						valueSuffix: ''
 				},
 		}]
         });
 
-//总抓取量
-
-
-var chart = Highcharts.chart('crawlsum',{
+        //总抓取量
+        var chart = Highcharts.chart('crawlsum',{
             chart: {
                     type: 'gauge',
                     plotBackgroundColor: null,
@@ -573,7 +559,6 @@ var chart = Highcharts.chart('crawlsum',{
                     startAngle: -150,
                     endAngle: 150,
 		    },
-		// the value axis
 		yAxis: {
 				min: 0,
 				max: 1000000,
@@ -587,26 +572,25 @@ var chart = Highcharts.chart('crawlsum',{
 				plotBands: [{
 						from: 0,
 						to: 300000,
-						color: '#55BF3B' // green
+						color: '#55BF3B'
 				}, {
 						from: 300000,
 						to: 800000,
-						color: '#DDDF0D' // yellow
+						color: '#DDDF0D'
 				}, {
 						from: 800000,
 						to: 1000000,
-						color: '#DF5353' // red
+						color: '#DF5353'
 				}]
 		},
 		series: [{
 				name: '总抓取量',
 				data: [parseInt(result[3])],
 				tooltip: {
-						valueSuffix: ''
+						valueSuffix: ' '
 				},
 		}]
         });
-
 
      //日抓取量   
         var chart = Highcharts.chart('dailycount',{
@@ -629,7 +613,7 @@ var chart = Highcharts.chart('crawlsum',{
 		    },
 		    yAxis: {
 				min: 0,
-				max: 300,
+				max: 1000,
 				labels: {
 						step: 2,
 						rotation: 'auto'
@@ -639,35 +623,31 @@ var chart = Highcharts.chart('crawlsum',{
 				},
 				plotBands: [{
 						from: 0,
-						to: 120,
-						color: '#55BF3B' // green
+						to: 500,
+						color: '#55BF3B'
 				}, {
-						from: 120,
-						to: 160,
-						color: '#DDDF0D' // yellow
+						from: 500,
+						to: 900,
+						color: '#DDDF0D'
 				}, {
-						from: 160,
-						to: 200,
-						color: '#DF5353' // red
+						from: 900,
+						to: 1000,
+						color: '#DF5353'
 				}]
 		},
 		series: [{
 				name: '日抓取量 ',
 				data: [parseInt(result[4])],
 				tooltip: {
-						valueSuffix: ''
+						valueSuffix: '  '
 				},
 		}]
         });
         },
-        error: function (info) {
+        error: function () {
             alert("请求出错,请登录");
         },
     });
-
 </script>
-
-
-
 </body>
 </html>

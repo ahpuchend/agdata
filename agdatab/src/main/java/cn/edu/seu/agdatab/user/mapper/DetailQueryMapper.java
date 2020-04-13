@@ -21,10 +21,9 @@ public interface DetailQueryMapper extends BaseMapper<DetailQuery> {
     @Select("select productdate,avgprice from dw_t_type_compare " +
             "where provincename = ${provincename} " +
             "and marketname = ${marketname} " +
-            "and type = ${type} and variety = ${variety} order by productdate desc;")
+            "and type = ${type} and variety = ${variety} order by str_to_date(productdate,'%Y-%m-%d') desc;")
     public List<DateAvg> getDateAvg(String provincename, String marketname,
                                     String type, String variety);
-
 
     //数据查询页面的下拉框,得到市场
     @Select("select distinct marketname from dw_t_pmtype_variety where provincename = ${provincename};")

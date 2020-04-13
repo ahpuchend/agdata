@@ -13,7 +13,6 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -23,7 +22,6 @@ import java.util.List;
  * <p>
  *  前端控制器
  * </p>
- *
  * @author xuliang
  * @since 2020-03-25
  */
@@ -36,7 +34,6 @@ public class AdminController {
     private IUserService iUserService;
     @Resource
     private UserMapper userMapper;
-
     public AdminController(IUserService iUserService) {
         this.iUserService = iUserService;
     }
@@ -46,10 +43,10 @@ public class AdminController {
         try{
             Page<User> page=new Page<User>(currentPage,pagesize) ;
             IPage<User> iPage=userMapper.selectPage(page,null);
-            System.out.println("current page:"+iPage.getCurrent());
-            System.out.println("page size:"+iPage.getSize());
-            System.out.println("total record:"+iPage.getTotal());
-            System.out.println("total page:"+iPage.getPages());
+//            System.out.println("current page:"+iPage.getCurrent());
+//            System.out.println("page size:"+iPage.getSize());
+//            System.out.println("total record:"+iPage.getTotal());
+//            System.out.println("total page:"+iPage.getPages());
             List<User> users=iPage.getRecords();
             JSONArray jsonArray = JSONArray.fromObject(users);
             res.put("code","200");
@@ -107,7 +104,7 @@ public class AdminController {
 //    }
     @RequestMapping(value = "/del",method = {RequestMethod.GET})
     public JSONObject delUser( @RequestParam(value = "userId",required = true) String userId)throws Exception{
-        System.out.println(userId);
+//        System.out.println(userId);
         JSONObject re=new JSONObject();
         QueryWrapper<User> queryWrapper=new QueryWrapper<User>();
         queryWrapper.eq("userId",userId);

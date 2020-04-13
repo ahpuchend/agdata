@@ -32,6 +32,6 @@ public interface TypeCompareMapper extends BaseMapper<TypeCompare> {
     @Select("select variety,avgprice,productdate from dw_t_type_compare " +
             "where provincename = ${provincename} " +
             "and marketname = ${marketname} " +
-            "and type = ${type} order by productdate desc;")
+            "and type = ${type} order by str_to_date(productdate,'%Y-%m-%d')desc;")
     List<VarAvgDate> getDetailQuery(String provincename, String marketname, String type);
 }

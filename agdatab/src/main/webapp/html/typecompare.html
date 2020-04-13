@@ -115,14 +115,6 @@
                 </div>
             </div>
             <ul class="nav">
-                <!--首页区：无子菜单-->
-                <!-- <li class="nav-item">
-                    <a href="#">
-                        <i class="fas fa-home"></i>
-                        <p>首页</p>
-                        <span class="badge badge-count badge-success"></span>
-                    </a>
-                </li> -->
                 <!--分界区：无连接-->
                 <li class="nav-section">
                     <div class="dropdown-divider"></div>
@@ -318,7 +310,7 @@
         var provincename = '\''+$('#provinces').find("option:selected").text()+'\'';
         $("#markets").empty();
         $.ajax({
-                url:"http://localhost:8081/user/tcsbmarkets",    //请求的url地址
+                url:"/user/tcsbmarkets",    //请求的url地址
                 dataType:"json",   //返回格式为json
                 async:true,
                 data:{
@@ -370,9 +362,11 @@
         options.series= new Array();
         options.title = new Object();
         options.xAxis = new Object();
+        options.credits = new Object();
         options.xAxis.categories = ['2020-03-01','2020-03-02','2020-03-03','2020-03-04','2020-03-05','2020-03-06',
                     '2020-03-07','2020-03-08',
                     ];
+        options.credits.enabled = false;
         options.title.text = '番茄不同品种均价对比';            
         var result=[
                 {
@@ -391,7 +385,6 @@
             }
         var char = Highcharts.chart('typecompareline',options);
 
-
   //  点击查询,展示折线图
     $("#sbtn").click(
         function(){
@@ -399,7 +392,7 @@
             var marketname = '\''+$('#markets').find("option:selected").text()+'\'' ;
             var type = '\''+$('#types').find("option:selected").text()+'\'' ;
             $.ajax({
-                url:"http://localhost:8081/user/typecompare",
+                url:"/user/typecompare",
                 dataType:"json", 
                 async:true,
                 data:{
@@ -409,20 +402,21 @@
                 },
                 type:"get",
                 success:function(result){
-                    console.log(result);
                     var options = new Object();
                     options.series= new Array();
+                    options.credits = new Object();
                     options.title = new Object();
                     options.xAxis = new Object();
                     options.yAxis = new Object();
                     options.yAxis.title = new Object();
-                    options.xAxis.categories = result[0].productDataList;
+                    options.xAxis.categories = result[0].productDataList.reverse();
+                    options.credits.enabled = false;
                     options.title.text = '番茄不同品种均价对比';
                     options.yAxis.title.text = '平均价格';
                     for(var j=0; j<result.length; ++j){
                         options.series[j] = new Object();
                         options.series[j].name= result[j].variety;
-                        options.series[j].data = result[j].avgPriceList;
+                        options.series[j].data = result[j].avgPriceList.reverse();
                     }
                     var char = Highcharts.chart('typecompareline',options);
                 },
@@ -431,8 +425,5 @@
     );
 
 </script>
-
-
-
 </body>
 </html>

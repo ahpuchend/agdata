@@ -18,7 +18,7 @@
             if(password==""){
                 alert("密码不能为空！请重新输入")
             }
-            $.get('http://localhost:8081/user/login',{userId:userId,password:password},
+            $.get('/user/login',{userId:userId,password:password},
                 function (result){
                     if(result.success){
                         console.log("user登录成功"+result.success);
@@ -38,7 +38,7 @@
             if(password==""){
                 alert("密码不能为空！请重新输入")
             }
-            $.get('http://localhost:8081/admin/login',{adminId:adminId,password:password},
+            $.get('/admin/login',{adminId:adminId,password:password},
                 function (result){
                     if(result.success){
                         window.location.href="/html/manage.html";

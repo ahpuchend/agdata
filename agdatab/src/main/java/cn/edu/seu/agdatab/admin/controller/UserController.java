@@ -9,10 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -21,7 +19,6 @@ import javax.servlet.http.HttpSession;
  * <p>
  *  前端控制器
  * </p>
- *
  * @author xuliang
  * @since 2020-03-25
  */
@@ -31,10 +28,9 @@ import javax.servlet.http.HttpSession;
 public class UserController {
     @Autowired
     private IUserService iUserService;
-    @Resource
     //注入bcryct加密
+    @Resource
     private BCryptPasswordEncoder bCryptPasswordEncoder;
-
     @RequestMapping(value = "/login",method = {RequestMethod.GET})
     public JSONObject checkLogin(User user, HttpServletRequest req){
         JSONObject result=new JSONObject();
@@ -54,7 +50,6 @@ public class UserController {
         }
         return result;
     }
-
     //用于用户登出
     @RequestMapping(value = "/logout",method = {RequestMethod.GET})
     public JSONObject checkOut(HttpServletRequest req){
@@ -65,7 +60,6 @@ public class UserController {
         result.put("msg","您已登出");
         return result;
     }
-
     //用于用户注册
     @RequestMapping(value = "/register",method = {RequestMethod.GET})
     public JSONObject addUser(User user){
@@ -95,14 +89,12 @@ public class UserController {
         }else {
             //可以注册新用户,密码入库时加密
            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword().trim()));
-//            System.out.printf("-----------  " + user.getPassword() + " ---------------------");
             iUserService.save(user);
             System.out.println("用户已被成功添加");
             result.put("success",true);
             result.put("msg","用户已成功注册！");
         }
         return result;
-
     }
 }
 

@@ -16,9 +16,6 @@ public class Validator {
      */
     public static final String REGEX_USERNAME = "^[a-zA-Z]\\w{4,17}$";
     //验证密码
-    /**
-     *
-     */
     public static final String REGEX_PASSWORD = "^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$";
     //验证手机号
     public static final String REGEX_MOBILE = "^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$";

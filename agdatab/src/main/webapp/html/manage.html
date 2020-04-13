@@ -14,7 +14,7 @@
 </head>
 <script>
     function removeSession() {
-        $.get('http://localhost:8081/user/logout',
+        $.get('/user/logout',
             function (result){
                 alert(result.msg);
                 window.location.href="userlogin.html";
@@ -107,7 +107,7 @@ background-attachment: fixed;">
                     this.pageNo=index||this.pageNo;
                     axios({
                         method:'get',
-                        url:`http://localhost:8081/admin/userlist/${this.pageNo}/${this.pageSize}`
+                        url:`/admin/userlist/${this.pageNo}/${this.pageSize}`
                     })
                         .then(res=> {
                             console.log(res);
@@ -139,7 +139,7 @@ background-attachment: fixed;">
                 },
                 del(userId){
                     console.log(userId);
-                    $.get("http://localhost:8081/admin/del",{userId:userId},
+                    $.get("/admin/del",{userId:userId},
                         function (result){
                             if(result.success){
                                 alert(result.msg);
@@ -161,7 +161,7 @@ background-attachment: fixed;">
 <script>
     function del(use) {
         var userId=use.id;
-        $.get("http://localhost:8081/admin/del",{userId:userId},
+        $.get("/admin/del",{userId:userId},
             function (result){
                 if(result.success){
                     alert(result.msg);

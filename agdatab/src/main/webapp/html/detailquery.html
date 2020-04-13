@@ -139,7 +139,7 @@
                     <div class="collapse show" id="base">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="realtimequery">
+                                <a href="realtimequery.html">
                                     <span class="sub-item">实时监控</span>
                                 </a>
                             </li>
@@ -332,7 +332,7 @@
             var provincename = '\''+$('#provinces').find("option:selected").text()+'\'';
             $("#markets").empty();
             $.ajax({
-                    url:"http://localhost:8081/user/dqsbmarkets",    //请求的url地址
+                    url:"/user/dqsbmarkets",    //请求的url地址
                     dataType:"json",   //返回格式为json
                     async:true,
                     data:{
@@ -357,7 +357,7 @@
                 var marketname = '\''+$('#markets').find("option:selected").text()+'\'';
                 $("#types").empty();
                 $.ajax({
-                    url:"http://localhost:8081/user/dqsbtypes",    //请求的url地址
+                    url:"/user/dqsbtypes",    //请求的url地址
                     dataType:"json",   //返回格式为json
                     async:true,
                     data:{
@@ -384,7 +384,7 @@
                     var type = '\''+$('#types').find("option:selected").text()+'\'';
                     $("#varieties").empty();
                     $.ajax({
-                        url:"http://localhost:8081/user/dqsbvariety",    //请求的url地址
+                        url:"/user/dqsbvariety",    //请求的url地址
                         dataType:"json",   //返回格式为json
                         async:true,
                         data:{
@@ -421,6 +421,9 @@
                         title: {
                             text:  $('#varieties').find("option:selected").text()+'的平均价格',
                         },
+                        credits:{
+                            enabled : false,
+                        },
                         xAxis:[
                                 {
                                     categories : ['2020-03-10','2020-03-12',
@@ -455,7 +458,7 @@
                     var type = '\''+$('#types').find("option:selected").text()+'\'' ;
                     var variety = '\''+$('#varieties').find("option:selected").text()+'\'' ;
                     $.ajax({
-                        url:"http://localhost:8081/user/detailquery",    //请求的url地址
+                        url:"/user/detailquery",    //请求的url地址
                         dataType:"json",   //返回格式为json
                         async:true,//请求是否异步，默认为异步，这也是ajax重要特性
                         data:{
@@ -475,7 +478,7 @@
                                 productDateList.push(result[i].productDate);
                                 avgPriceList.push(result[i].avgPrice);
                             }
-                            var chart = new Highcharts.Chart({
+                             var chart = new Highcharts.Chart({
                                 chart: {
                                     renderTo: 'dateavgbar',
                                     type: 'column',
@@ -489,6 +492,9 @@
                                 },
                                 title: {
                                     text:  $('#varieties').find("option:selected").text()+'的平均价格',
+                                },
+                                credits:{
+                                    enabled : false,
                                 },
                                 xAxis:[
                                         {
@@ -509,22 +515,19 @@
                                 series: [{
                                     name: "收起图表",
                                     data: avgPriceList,
-                                }]
+                                }],
                             });
-                          
+
                         },
                         error:function(){
                         //请求出错处理
                             alert("请求出错,请登录");
                         },
-                        complete:function(){
-                            console.log("success");
-                        }
                     });
                 });
                   // 将当前角度信息同步到 DOM 中
                   var alphaValue = $('#alpha-value'),
-                    betaValue = $('#beta-value'),
+                        betaValue = $('#beta-value'),
                         depthValue = $('#depth-value');
                     function showValues() {
                         alphaValue.innerHTML = chart.options.chart.options3d.alpha;

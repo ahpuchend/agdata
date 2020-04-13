@@ -22,21 +22,18 @@ public class Interceptor implements HandlerInterceptor {
         User user = (User) session.getAttribute("user");
         System.out.println(user);
         if(null == user){
-            System.out.println("由于用户未登录,拦截");
+//            System.out.println("由于用户未登录,拦截");
             flag = false;
-            response.sendRedirect("/userlogin.html");
+            response.sendRedirect("/html/userlogin.html");
         }
         return flag;
     }
-
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response,
                            Object handler, ModelAndView modelAndView) throws Exception {
-
     }
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response,
                                 Object handler, Exception ex) throws Exception {
-
     }
 }
